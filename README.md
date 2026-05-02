@@ -8,18 +8,20 @@ Landing page responsive para WEAGRO, una agencia de servicios digitales para emp
 
 - HTML5 standalone
 - CSS3 embebido
-- JavaScript mínimo embebido
-- Tipografía Rubik desde Google Fonts
-- Vite para desarrollo local y build de producción
+- JavaScript minimo embebido
+- Tipografia Rubik desde Google Fonts
+- Vite para desarrollo local y build de produccion
 - Vercel para despliegue
 
-## Configuración editable
+## Configuracion editable
 
 En `index.html` se pueden ajustar estos valores:
 
 - Email de contacto: buscar `hola@weagro.com.ar`
-- WhatsApp: reemplazar `https://wa.me/5490000000000` por el número real
-- Google Analytics: reemplazar `G-XXXXXXXXXX` por el ID de medición real y descomentar el bloque del `<head>`
+- WhatsApp: buscar `543704602028` y reemplazar por el numero real si cambia
+- Google Analytics: reemplazar `G-XXXXXXXXXX` por el ID de medicion real y descomentar el bloque del `<head>`
+- Dominio/canonical/OG: reemplazar `https://weagro.vercel.app/` por el dominio definitivo cuando este configurado
+- Favicon y preview social: editar `public/favicon.svg` y `public/og-image.svg`
 
 ## Desarrollo local
 

@@ -7,6 +7,32 @@
       name="description"
       content="WEAGRO - Agencia de servicios digitales para empresas del agro en el NEA argentino."
     />
+    <meta
+      name="keywords"
+      content="agencia digital agro, paginas web agro, marketing agropecuario, webapps agro, NEA Argentina, WEAGRO"
+    />
+    <meta name="author" content="WEAGRO" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#2C6E3C" />
+    <link rel="canonical" href="https://weagro.vercel.app/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="WEAGRO" />
+    <meta property="og:title" content="WEAGRO | Soluciones digitales para empresas del agro" />
+    <meta
+      property="og:description"
+      content="Paginas web, tiendas online, branding, contenido, SEO y webapps para empresas agropecuarias del NEA."
+    />
+    <meta property="og:url" content="https://weagro.vercel.app/" />
+    <meta property="og:image" content="https://weagro.vercel.app/og-image.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="WEAGRO | Soluciones digitales para empresas del agro" />
+    <meta
+      name="twitter:description"
+      content="Digitalizacion, marketing y software para empresas agropecuarias."
+    />
+    <meta name="twitter:image" content="https://weagro.vercel.app/og-image.svg" />
     <title>WEAGRO | Soluciones digitales para empresas del agro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,6 +49,19 @@
       gtag("config", "G-XXXXXXXXXX");
     </script>
     -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "WEAGRO",
+        "description": "Agencia de servicios digitales para empresas agropecuarias del NEA argentino.",
+        "areaServed": "NEA Argentina",
+        "url": "https://weagro.vercel.app/",
+        "email": "hola@weagro.com.ar",
+        "telephone": "+54 3704 602028",
+        "sameAs": ["https://github.com/weapub/weagro"]
+      }
+    </script>
     <style>
       :root {
         --green: #2c6e3c;
@@ -576,6 +615,38 @@
         margin-bottom: 0;
       }
 
+      .form-status {
+        background: var(--green-soft);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        color: var(--green-dark);
+        display: none;
+        font-weight: 700;
+        margin: 0;
+        padding: 12px 14px;
+      }
+
+      .whatsapp-float {
+        align-items: center;
+        background: #25d366;
+        border-radius: 999px;
+        bottom: 18px;
+        box-shadow: 0 14px 34px rgba(37, 211, 102, 0.34);
+        color: #102116;
+        display: inline-flex;
+        font-weight: 900;
+        gap: 8px;
+        min-height: 52px;
+        padding: 0 18px;
+        position: fixed;
+        right: 18px;
+        z-index: 20;
+      }
+
+      .whatsapp-float:hover {
+        transform: translateY(-2px);
+      }
+
       /* Footer / Ultimo CTA */
       .footer-cta {
         background: var(--green-dark);
@@ -701,6 +772,13 @@
 
         .badge {
           min-height: 68px;
+        }
+
+        .whatsapp-float {
+          bottom: 12px;
+          left: 16px;
+          right: 16px;
+          justify-content: center;
         }
       }
     </style>
@@ -1044,7 +1122,7 @@
             </p>
             <div class="contact-list" aria-label="Canales de contacto">
               <a href="mailto:hola@weagro.com.ar">✉️ hola@weagro.com.ar</a>
-              <a href="https://wa.me/5490000000000" target="_blank" rel="noreferrer">
+              <a href="https://wa.me/543704602028" data-whatsapp-link target="_blank" rel="noreferrer">
                 💬 WhatsApp WEAGRO
               </a>
             </div>
@@ -1087,11 +1165,14 @@
               ></textarea>
             </div>
             <button class="btn btn-primary" type="submit">
-              Enviar consulta
+              Enviar consulta por WhatsApp
             </button>
+            <p class="form-status" id="contactStatus">
+              Te estamos llevando a WhatsApp con tu consulta preparada.
+            </p>
             <p class="form-note">
-              El formulario abre tu cliente de correo con el mensaje armado.
-              Luego podemos conectarlo a Formspree, Resend o un backend propio.
+              El formulario abre WhatsApp con el mensaje armado. También podés
+              escribirnos por email desde el panel de contacto.
             </p>
           </form>
         </div>
@@ -1113,6 +1194,17 @@
       </div>
     </footer>
 
+    <a
+      class="whatsapp-float"
+      href="https://wa.me/543704602028"
+      data-whatsapp-link
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Contactar a WEAGRO por WhatsApp"
+    >
+      💬 WhatsApp
+    </a>
+
     <script>
       const serviceCheckboxes = document.querySelectorAll(
         '.checkbox-list input[type="checkbox"]',
@@ -1121,10 +1213,27 @@
       const estimateMessage = document.getElementById("estimateMessage");
       const contactButtons = document.querySelectorAll("[data-scroll-contact]");
       const contactForm = document.getElementById("contactForm");
+      const contactStatus = document.getElementById("contactStatus");
+      const whatsappLinks = document.querySelectorAll("[data-whatsapp-link]");
+      const whatsappNumber = "543704602028";
       const formatter = new Intl.NumberFormat("es-AR", {
         style: "currency",
         currency: "ARS",
         maximumFractionDigits: 0,
+      });
+
+      function trackEvent(name, params = {}) {
+        if (typeof window.gtag === "function") {
+          window.gtag("event", name, params);
+        }
+      }
+
+      const defaultWhatsappMessage = encodeURIComponent(
+        "Hola WEAGRO, quiero coordinar un diagnostico sin cargo para mi empresa agro.",
+      );
+
+      whatsappLinks.forEach((link) => {
+        link.href = `https://wa.me/${whatsappNumber}?text=${defaultWhatsappMessage}`;
       });
 
       function updateEstimate() {
@@ -1150,11 +1259,20 @@
       }
 
       serviceCheckboxes.forEach((checkbox) => {
-        checkbox.addEventListener("change", updateEstimate);
+        checkbox.addEventListener("change", () => {
+          updateEstimate();
+          trackEvent("estimate_service_toggle", {
+            service: checkbox.nextElementSibling.textContent.trim(),
+            checked: checkbox.checked,
+          });
+        });
       });
 
       contactButtons.forEach((button) => {
         button.addEventListener("click", () => {
+          trackEvent("cta_contact_click", {
+            label: button.textContent.trim(),
+          });
           document.getElementById("contacto").scrollIntoView({
             behavior: "smooth",
             block: "start",
@@ -1162,22 +1280,37 @@
         });
       });
 
+      whatsappLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          trackEvent("whatsapp_direct_click", {
+            location: link.classList.contains("whatsapp-float")
+              ? "floating_button"
+              : "contact_panel",
+          });
+        });
+      });
+
       contactForm.addEventListener("submit", (event) => {
         event.preventDefault();
         const formData = new FormData(contactForm);
-        const subject = `Consulta WEAGRO - ${formData.get("company")}`;
-        const body = [
+        const message = [
+          "Hola WEAGRO, quiero coordinar un diagnostico sin cargo.",
+          "",
           `Nombre: ${formData.get("name")}`,
           `Empresa: ${formData.get("company")}`,
           `Email: ${formData.get("email")}`,
-          `Servicio: ${formData.get("service")}`,
-          "",
+          `Servicio de interes: ${formData.get("service")}`,
           `Mensaje: ${formData.get("message")}`,
         ].join("\n");
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+          message,
+        )}`;
 
-        window.location.href = `mailto:hola@weagro.com.ar?subject=${encodeURIComponent(
-          subject,
-        )}&body=${encodeURIComponent(body)}`;
+        trackEvent("contact_form_submit", {
+          service: formData.get("service"),
+        });
+        contactStatus.style.display = "block";
+        window.open(whatsappUrl, "_blank", "noopener,noreferrer");
       });
     </script>
   </body>
