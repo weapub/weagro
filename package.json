@@ -1,0 +1,25 @@
+{
+  "name": "weagro-landing",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Landing page de WEAGRO, agencia digital para empresas del agro.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "start": "vite preview --host 127.0.0.1"
+  },
+  "keywords": [
+    "landing-page",
+    "agro",
+    "weagro",
+    "vite",
+    "vercel"
+  ],
+  "author": "WEAGRO",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "vite": "^7.1.12"
+  }
+}

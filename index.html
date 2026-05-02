@@ -1,0 +1,987 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="WEAGRO - Agencia de servicios digitales para empresas del agro en el NEA argentino."
+    />
+    <title>WEAGRO | Soluciones digitales para empresas del agro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --green: #2c6e3c;
+        --green-dark: #1f4f2b;
+        --green-soft: #e6f4ea;
+        --field: #f3d37a;
+        --ink: #1f2937;
+        --gray: #4b5563;
+        --muted: #6b7280;
+        --line: #dbe7df;
+        --bg: #f9fafb;
+        --white: #ffffff;
+        --shadow: 0 16px 44px rgba(31, 79, 43, 0.1);
+        --radius: 16px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .eyebrow {
+        color: var(--green);
+        font-size: 0.82rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        margin: 0 0 12px;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        color: var(--green-dark);
+        font-size: clamp(2.7rem, 8vw, 5.9rem);
+        letter-spacing: -0.04em;
+        line-height: 0.95;
+        margin-bottom: 24px;
+      }
+
+      h2 {
+        color: var(--green-dark);
+        font-size: clamp(2rem, 4vw, 3.35rem);
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        margin-bottom: 16px;
+      }
+
+      h3 {
+        color: var(--green-dark);
+        font-size: 1.12rem;
+        line-height: 1.25;
+        margin-bottom: 10px;
+      }
+
+      .lead {
+        color: var(--gray);
+        font-size: 1.08rem;
+        max-width: 710px;
+      }
+
+      .btn {
+        align-items: center;
+        border: 0;
+        border-radius: 999px;
+        cursor: pointer;
+        display: inline-flex;
+        font-weight: 800;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 22px;
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          background 0.2s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-primary {
+        background: var(--green);
+        box-shadow: 0 14px 30px rgba(44, 110, 60, 0.22);
+        color: var(--white);
+      }
+
+      .btn-secondary {
+        background: var(--white);
+        border: 1px solid var(--line);
+        color: var(--green-dark);
+      }
+
+      .card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      /* Header/Navbar */
+      .site-header {
+        background: rgba(255, 255, 255, 0.86);
+        border-bottom: 1px solid rgba(219, 231, 223, 0.85);
+        backdrop-filter: blur(16px);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+      }
+
+      .navbar {
+        align-items: center;
+        display: flex;
+        gap: 24px;
+        justify-content: space-between;
+        min-height: 76px;
+      }
+
+      .logo {
+        align-items: center;
+        color: var(--green-dark);
+        display: inline-flex;
+        font-size: 1.18rem;
+        font-weight: 900;
+        gap: 10px;
+        letter-spacing: 0.02em;
+      }
+
+      .logo-mark {
+        align-items: center;
+        background: var(--green);
+        border-radius: 12px;
+        color: var(--white);
+        display: inline-flex;
+        height: 40px;
+        justify-content: center;
+        width: 40px;
+      }
+
+      .nav-menu {
+        display: none;
+        gap: 28px;
+      }
+
+      .nav-menu a {
+        color: var(--gray);
+        font-weight: 700;
+      }
+
+      .nav-menu a:hover {
+        color: var(--green);
+      }
+
+      /* Hero */
+      .hero {
+        background:
+          linear-gradient(110deg, rgba(249, 250, 251, 0.96) 0%, rgba(249, 250, 251, 0.88) 45%, rgba(249, 250, 251, 0.36) 100%),
+          url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85")
+            center / cover;
+        min-height: 720px;
+        padding: 96px 0 48px;
+      }
+
+      .hero-grid {
+        display: grid;
+        gap: 42px;
+      }
+
+      .hero-content {
+        max-width: 760px;
+      }
+
+      .hero-content .lead {
+        font-size: clamp(1.05rem, 2vw, 1.28rem);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-top: 30px;
+      }
+
+      .badges {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 1fr;
+        margin-top: 36px;
+        max-width: 760px;
+      }
+
+      .badge {
+        align-items: center;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(219, 231, 223, 0.9);
+        border-radius: 16px;
+        box-shadow: 0 10px 26px rgba(31, 79, 43, 0.08);
+        display: flex;
+        gap: 12px;
+        min-height: 76px;
+        padding: 16px;
+      }
+
+      .badge strong {
+        color: var(--green);
+        display: block;
+        font-size: 1.6rem;
+        line-height: 1;
+      }
+
+      .badge span {
+        color: var(--gray);
+        font-weight: 700;
+      }
+
+      /* Servicios */
+      .section-heading {
+        margin-bottom: 34px;
+      }
+
+      .services-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .service-card {
+        min-height: 188px;
+        padding: 24px;
+      }
+
+      .service-card p,
+      .why-card p,
+      .sector-card p,
+      .benefit p {
+        color: var(--muted);
+        margin-bottom: 0;
+      }
+
+      .service-icon,
+      .why-icon,
+      .sector-icon {
+        align-items: center;
+        background: var(--green-soft);
+        border-radius: 14px;
+        display: inline-flex;
+        font-size: 1.35rem;
+        height: 46px;
+        justify-content: center;
+        margin-bottom: 18px;
+        width: 46px;
+      }
+
+      /* Por que WEAGRO */
+      .why {
+        background: var(--white);
+      }
+
+      .why-layout {
+        display: grid;
+        gap: 28px;
+      }
+
+      .why-feature {
+        background: var(--green-dark);
+        border-radius: 24px;
+        color: var(--white);
+        padding: clamp(28px, 4vw, 44px);
+      }
+
+      .why-feature h2 {
+        color: var(--white);
+      }
+
+      .why-feature p {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 1.08rem;
+        margin-bottom: 0;
+      }
+
+      .why-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .why-card {
+        padding: 22px;
+      }
+
+      /* Clientes */
+      .sectors-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .sector-card {
+        padding: 22px;
+      }
+
+      /* Beneficios */
+      .benefits {
+        background: var(--green-soft);
+      }
+
+      .benefits-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 28px;
+      }
+
+      .benefit {
+        align-items: flex-start;
+        display: flex;
+        gap: 14px;
+        padding: 20px;
+      }
+
+      .benefit-number {
+        align-items: center;
+        background: var(--green);
+        border-radius: 999px;
+        color: var(--white);
+        display: inline-flex;
+        flex: 0 0 auto;
+        font-weight: 900;
+        height: 34px;
+        justify-content: center;
+        width: 34px;
+      }
+
+      /* Estimador */
+      .estimator-layout {
+        display: grid;
+        gap: 24px;
+      }
+
+      .checkbox-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .check-row {
+        align-items: center;
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        cursor: pointer;
+        display: flex;
+        gap: 12px;
+        min-height: 58px;
+        padding: 12px 14px;
+      }
+
+      .check-row input {
+        accent-color: var(--green);
+        height: 18px;
+        width: 18px;
+      }
+
+      .check-row span {
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .estimate-box {
+        align-self: start;
+        padding: 28px;
+      }
+
+      .estimate-label {
+        color: var(--muted);
+        font-weight: 800;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      .estimate-total {
+        color: var(--green);
+        display: none;
+        font-size: clamp(2.3rem, 5vw, 4rem);
+        font-weight: 900;
+        letter-spacing: -0.04em;
+        line-height: 1;
+        margin-bottom: 14px;
+      }
+
+      .estimate-message {
+        color: var(--gray);
+        margin-bottom: 0;
+      }
+
+      /* Testimonios */
+      .testimonial-card {
+        padding: clamp(26px, 5vw, 46px);
+      }
+
+      .quote {
+        color: var(--green-dark);
+        font-size: clamp(1.25rem, 3vw, 2rem);
+        font-weight: 800;
+        line-height: 1.25;
+        margin-bottom: 24px;
+      }
+
+      .testimonial-meta {
+        color: var(--gray);
+        font-weight: 700;
+      }
+
+      .testimonial-badge {
+        background: var(--field);
+        border-radius: 999px;
+        color: var(--green-dark);
+        display: inline-flex;
+        font-size: 0.86rem;
+        font-weight: 900;
+        margin-top: 18px;
+        padding: 8px 14px;
+      }
+
+      /* Footer / Ultimo CTA */
+      .footer-cta {
+        background: var(--green-dark);
+        color: var(--white);
+        padding: 72px 0 28px;
+      }
+
+      .footer-grid {
+        align-items: center;
+        display: grid;
+        gap: 28px;
+      }
+
+      .footer-cta h2 {
+        color: var(--white);
+        margin-bottom: 0;
+      }
+
+      .footer-cta .btn {
+        background: var(--field);
+        color: var(--green-dark);
+        justify-self: start;
+      }
+
+      .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.16);
+        color: rgba(255, 255, 255, 0.72);
+        margin-top: 44px;
+        padding-top: 22px;
+      }
+
+      @media (min-width: 768px) {
+        .section {
+          padding: 92px 0;
+        }
+
+        .nav-menu {
+          display: flex;
+        }
+
+        .badges {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .why-layout {
+          grid-template-columns: 0.9fr 1.1fr;
+        }
+
+        .why-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .sectors-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .benefits-list {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .estimator-layout {
+          grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+        }
+
+        .footer-grid {
+          grid-template-columns: minmax(0, 1fr) auto;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .hero {
+          min-height: 760px;
+          padding-top: 128px;
+        }
+
+        .services-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .service-card:nth-child(7) {
+          grid-column: span 2;
+        }
+
+        .why-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .sectors-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        .benefits-list {
+          grid-template-columns: repeat(5, 1fr);
+        }
+      }
+
+      @media (max-width: 520px) {
+        .navbar {
+          min-height: 68px;
+        }
+
+        .nav-cta {
+          min-height: 42px;
+          padding: 0 16px;
+        }
+
+        .hero {
+          min-height: auto;
+          padding: 72px 0 40px;
+        }
+
+        .hero-actions .btn {
+          width: 100%;
+        }
+
+        .badge {
+          min-height: 68px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header/Navbar -->
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="logo" href="#inicio" aria-label="WEAGRO inicio">
+          <span class="logo-mark">W</span>
+          <span>WEAGRO</span>
+        </a>
+        <nav class="nav-menu" aria-label="Navegacion principal">
+          <a href="#inicio">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#clientes">Clientes</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <button class="btn btn-secondary nav-cta" data-cta type="button">
+          Hablemos
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="inicio">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <p class="eyebrow">Agencia digital para el agro</p>
+            <h1>Soluciones digitales para empresas del agro</h1>
+            <p class="lead">
+              Diseñamos páginas web, tiendas online, contenido audiovisual,
+              estrategias digitales y webapps para empresas agropecuarias que
+              quieren crecer con una presencia profesional y medible.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" data-cta type="button">
+                ¿Necesitás una solución personalizada? Hablemos
+              </button>
+            </div>
+            <div class="badges" aria-label="Datos destacados">
+              <div class="badge">
+                <strong>7+</strong>
+                <span>Servicios especializados</span>
+              </div>
+              <div class="badge">
+                <strong>NEA</strong>
+                <span>Experiencia regional</span>
+              </div>
+              <div class="badge">
+                <strong>100%</strong>
+                <span>Foco agropecuario</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Servicios -->
+      <section class="section" id="servicios">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Lo que hacemos</p>
+            <h2>Servicios digitales para el agro</h2>
+            <p class="lead">
+              Del branding al software: todo en un mismo equipo especializado
+              en el sector agropecuario.
+            </p>
+          </div>
+          <div class="services-grid">
+            <article class="card service-card">
+              <span class="service-icon">🌐</span>
+              <h3>Páginas web agro</h3>
+              <p>Sitios institucionales rápidos, claros y preparados para convertir visitas en consultas.</p>
+            </article>
+            <article class="card service-card">
+              <span class="service-icon">🛒</span>
+              <h3>Tiendas online</h3>
+              <p>Catálogos y ecommerce para insumos, productos, repuestos y servicios del sector.</p>
+            </article>
+            <article class="card service-card">
+              <span class="service-icon">✳️</span>
+              <h3>Diseño y branding</h3>
+              <p>Identidad visual, piezas comerciales y sistemas gráficos con mirada agropecuaria.</p>
+            </article>
+            <article class="card service-card">
+              <span class="service-icon">📱</span>
+              <h3>Redes sociales</h3>
+              <p>Planificación, contenidos y campañas para estar presente donde decide tu cliente.</p>
+            </article>
+            <article class="card service-card">
+              <span class="service-icon">🎥</span>
+              <h3>Video y audio</h3>
+              <p>Producción audiovisual, reels, testimonios y piezas para comunicar con autoridad.</p>
+            </article>
+            <article class="card service-card">
+              <span class="service-icon">🔎</span>
+              <h3>SEO</h3>
+              <p>Optimización para que tu empresa aparezca cuando productores y compradores buscan.</p>
+            </article>
+            <article class="card service-card">
+              <span class="service-icon">⚙️</span>
+              <h3>Webapps a medida</h3>
+              <p>Herramientas internas, formularios, tableros y automatizaciones para ordenar procesos.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Por que WEAGRO -->
+      <section class="section why">
+        <div class="container why-layout">
+          <div class="why-feature">
+            <p class="eyebrow">Por qué WEAGRO</p>
+            <h2>Tecnología y diseño con alma de campo</h2>
+            <p>
+              No somos una agencia genérica. WEAGRO nació para acompañar a
+              empresas agropecuarias del NEA con soluciones digitales simples,
+              profesionales y conectadas con la realidad comercial del sector.
+            </p>
+          </div>
+          <div class="why-grid">
+            <article class="card why-card">
+              <span class="why-icon">🌱</span>
+              <h3>Enfoque 100% agro</h3>
+              <p>Entendemos ciclos, regiones, temporadas y formas de compra del campo.</p>
+            </article>
+            <article class="card why-card">
+              <span class="why-icon">💻</span>
+              <h3>Diseño + tecnología + marketing</h3>
+              <p>Unimos estrategia visual, desarrollo y captación de demanda.</p>
+            </article>
+            <article class="card why-card">
+              <span class="why-icon">🧩</span>
+              <h3>Soluciones a medida</h3>
+              <p>Creamos lo justo para cada empresa, sin paquetes rígidos.</p>
+            </article>
+            <article class="card why-card">
+              <span class="why-icon">📍</span>
+              <h3>Experiencia regional</h3>
+              <p>Conocemos el NEA y sus desafíos de comunicación y venta.</p>
+            </article>
+            <article class="card why-card">
+              <span class="why-icon">📈</span>
+              <h3>Visión comercial</h3>
+              <p>Cada pieza digital tiene que ayudar a vender, ordenar o medir mejor.</p>
+            </article>
+            <article class="card why-card">
+              <span class="why-icon">🤝</span>
+              <h3>Cercanía con el cliente</h3>
+              <p>Trabajamos con seguimiento directo, claridad y acompañamiento real.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Clientes / Sectores -->
+      <section class="section" id="clientes">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Clientes</p>
+            <h2>¿Tu empresa es parte del agro?</h2>
+            <p class="lead">
+              Diseñamos soluciones para negocios que viven de producir,
+              transformar, vender o acompañar al sector agropecuario.
+            </p>
+          </div>
+          <div class="sectors-grid">
+            <article class="card sector-card">
+              <span class="sector-icon">🐂</span>
+              <h3>Cabañas ganaderas</h3>
+              <p>Presencia profesional para genética, remates y reproductores.</p>
+            </article>
+            <article class="card sector-card">
+              <span class="sector-icon">🏭</span>
+              <h3>Agroindustrias</h3>
+              <p>Comunicación clara para procesos, productos y capacidad instalada.</p>
+            </article>
+            <article class="card sector-card">
+              <span class="sector-icon">🌾</span>
+              <h3>Acopios y distribuidores</h3>
+              <p>Canales digitales para informar, captar clientes y ordenar consultas.</p>
+            </article>
+            <article class="card sector-card">
+              <span class="sector-icon">🚜</span>
+              <h3>Maquinaria agrícola</h3>
+              <p>Catálogos, landing pages y campañas para equipos y repuestos.</p>
+            </article>
+            <article class="card sector-card">
+              <span class="sector-icon">💊</span>
+              <h3>Veterinarias e insumos</h3>
+              <p>Tiendas, contenido y campañas para productos técnicos.</p>
+            </article>
+            <article class="card sector-card">
+              <span class="sector-icon">🏢</span>
+              <h3>Cooperativas</h3>
+              <p>Herramientas institucionales y de comunicación con asociados.</p>
+            </article>
+            <article class="card sector-card">
+              <span class="sector-icon">🧑‍🌾</span>
+              <h3>Productores medianos</h3>
+              <p>Marca personal, visibilidad y orden comercial para crecer.</p>
+            </article>
+            <article class="card sector-card">
+              <span class="sector-icon">🔧</span>
+              <h3>Proveedores del agro</h3>
+              <p>Desarrollo digital para servicios, tecnología e insumos especializados.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Beneficios -->
+      <section class="section benefits">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Beneficios</p>
+            <h2>Digitalizar no es solo verse mejor: es trabajar mejor.</h2>
+          </div>
+          <div class="benefits-list">
+            <article class="card benefit">
+              <span class="benefit-number">1</span>
+              <div>
+                <h3>Mejor imagen profesional</h3>
+                <p>Tu empresa transmite confianza desde el primer contacto.</p>
+              </div>
+            </article>
+            <article class="card benefit">
+              <span class="benefit-number">2</span>
+              <div>
+                <h3>Más consultas y ventas</h3>
+                <p>Canales preparados para captar oportunidades comerciales.</p>
+              </div>
+            </article>
+            <article class="card benefit">
+              <span class="benefit-number">3</span>
+              <div>
+                <h3>Presencia digital sólida</h3>
+                <p>Una base coherente para web, redes, campañas y contenidos.</p>
+              </div>
+            </article>
+            <article class="card benefit">
+              <span class="benefit-number">4</span>
+              <div>
+                <h3>Procesos más ordenados</h3>
+                <p>Automatizaciones y herramientas para responder más rápido.</p>
+              </div>
+            </article>
+            <article class="card benefit">
+              <span class="benefit-number">5</span>
+              <div>
+                <h3>Escalabilidad con software</h3>
+                <p>Sistemas propios para crecer sin depender de planillas sueltas.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Estimador de inversion interactivo -->
+      <section class="section" id="estimador">
+        <div class="container estimator-layout">
+          <div>
+            <p class="eyebrow">Estimador interactivo</p>
+            <h2>¿Cuánto cuesta digitalizar tu empresa?</h2>
+            <p class="lead">
+              Seleccioná los servicios que necesitás y obtené una estimación al
+              instante.
+            </p>
+            <div class="checkbox-list" aria-label="Servicios a estimar">
+              <label class="check-row">
+                <input type="checkbox" value="150" />
+                <span>Páginas web agro</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" value="150" />
+                <span>Tiendas online</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" value="150" />
+                <span>Diseño y branding</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" value="150" />
+                <span>Redes sociales</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" value="150" />
+                <span>Video y audio</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" value="150" />
+                <span>SEO</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" value="150" />
+                <span>Webapps a medida</span>
+              </label>
+            </div>
+          </div>
+
+          <aside class="card estimate-box" aria-live="polite">
+            <p class="estimate-label">Estimación inicial</p>
+            <div class="estimate-total" id="estimateTotal">$ 0</div>
+            <p class="estimate-message" id="estimateMessage">
+              Seleccioná al menos un servicio para ver la estimación.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Testimonios -->
+      <section class="section">
+        <div class="container">
+          <article class="card testimonial-card">
+            <p class="eyebrow">Testimonios</p>
+            <p class="quote">
+              “Antes no teníamos presencia online y perdíamos consultas
+              constantemente. WEAGRO nos armó una web clara, profesional y
+              alineada con nuestra forma de vender.”
+            </p>
+            <div class="testimonial-meta">
+              Martín Villarreal - Propietario · Cabaña El Ombú - Corrientes
+            </div>
+            <span class="testimonial-badge">Página web + Branding</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer / Ultimo CTA -->
+    <footer class="footer-cta" id="contacto">
+      <div class="container">
+        <div class="footer-grid">
+          <h2>¿Tu empresa agro ya está lista para dar el siguiente salto digital?</h2>
+          <button class="btn" data-cta type="button">
+            Empezá con un diagnóstico sin cargo
+          </button>
+        </div>
+        <p class="copyright">
+          WEAGRO - Digitalización para el agro | NEA Argentina
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const serviceCheckboxes = document.querySelectorAll(
+        '.checkbox-list input[type="checkbox"]',
+      );
+      const estimateTotal = document.getElementById("estimateTotal");
+      const estimateMessage = document.getElementById("estimateMessage");
+      const ctaButtons = document.querySelectorAll("[data-cta]");
+      const formatter = new Intl.NumberFormat("es-AR", {
+        style: "currency",
+        currency: "ARS",
+        maximumFractionDigits: 0,
+      });
+
+      function updateEstimate() {
+        const selected = Array.from(serviceCheckboxes).filter(
+          (checkbox) => checkbox.checked,
+        );
+        const total = selected.reduce(
+          (sum, checkbox) => sum + Number(checkbox.value),
+          0,
+        );
+
+        if (selected.length === 0) {
+          estimateTotal.style.display = "none";
+          estimateMessage.textContent =
+            "Seleccioná al menos un servicio para ver la estimación.";
+          return;
+        }
+
+        estimateTotal.style.display = "block";
+        estimateTotal.textContent = formatter.format(total);
+        estimateMessage.textContent =
+          "Valor estimativo ficticio. Coordinemos un diagnóstico para armar una propuesta real.";
+      }
+
+      serviceCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener("change", updateEstimate);
+      });
+
+      ctaButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          alert(
+            "Gracias por contactar a WEAGRO. Te responderemos para coordinar un diagnóstico sin cargo.",
+          );
+        });
+      });
+    </script>
+  </body>
+</html>
