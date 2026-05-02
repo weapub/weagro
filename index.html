@@ -11,9 +11,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+    <!-- Google Analytics: reemplazar G-XXXXXXXXXX por el ID real cuando esté disponible.
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-XXXXXXXXXX");
+    </script>
+    -->
     <style>
       :root {
         --green: #2c6e3c;
@@ -42,7 +51,7 @@
         margin: 0;
         background: var(--bg);
         color: var(--ink);
-        font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont,
+        font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont,
           "Segoe UI", sans-serif;
         line-height: 1.6;
       }
@@ -469,6 +478,104 @@
         padding: 8px 14px;
       }
 
+      /* Contacto */
+      .contact {
+        background: var(--white);
+      }
+
+      .contact-layout {
+        display: grid;
+        gap: 28px;
+      }
+
+      .contact-panel {
+        background:
+          linear-gradient(140deg, rgba(31, 79, 43, 0.95), rgba(44, 110, 60, 0.88)),
+          url("https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1400&q=85")
+            center / cover;
+        border-radius: 24px;
+        color: var(--white);
+        min-height: 360px;
+        padding: clamp(28px, 5vw, 46px);
+      }
+
+      .contact-panel h2 {
+        color: var(--white);
+      }
+
+      .contact-panel p {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 1.08rem;
+      }
+
+      .contact-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .contact-list a {
+        align-items: center;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 14px;
+        color: var(--white);
+        display: flex;
+        font-weight: 800;
+        gap: 10px;
+        min-height: 50px;
+        padding: 12px 14px;
+      }
+
+      .contact-form {
+        display: grid;
+        gap: 14px;
+        padding: clamp(22px, 4vw, 32px);
+      }
+
+      .form-row {
+        display: grid;
+        gap: 8px;
+      }
+
+      .form-row label {
+        color: var(--green-dark);
+        font-size: 0.84rem;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .form-row input,
+      .form-row select,
+      .form-row textarea {
+        background: #f9fafb;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        color: var(--ink);
+        min-height: 52px;
+        outline: none;
+        padding: 12px 14px;
+        width: 100%;
+      }
+
+      .form-row textarea {
+        min-height: 124px;
+        resize: vertical;
+      }
+
+      .form-row input:focus,
+      .form-row select:focus,
+      .form-row textarea:focus {
+        border-color: var(--green);
+        box-shadow: 0 0 0 4px rgba(44, 110, 60, 0.1);
+      }
+
+      .form-note {
+        color: var(--muted);
+        font-size: 0.92rem;
+        margin-bottom: 0;
+      }
+
       /* Footer / Ultimo CTA */
       .footer-cta {
         background: var(--green-dark);
@@ -535,6 +642,10 @@
 
         .estimator-layout {
           grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+        }
+
+        .contact-layout {
+          grid-template-columns: minmax(0, 0.82fr) minmax(320px, 0.78fr);
         }
 
         .footer-grid {
@@ -608,7 +719,7 @@
           <a href="#clientes">Clientes</a>
           <a href="#contacto">Contacto</a>
         </nav>
-        <button class="btn btn-secondary nav-cta" data-cta type="button">
+        <button class="btn btn-secondary nav-cta" data-scroll-contact type="button">
           Hablemos
         </button>
       </div>
@@ -627,7 +738,7 @@
               quieren crecer con una presencia profesional y medible.
             </p>
             <div class="hero-actions">
-              <button class="btn btn-primary" data-cta type="button">
+              <button class="btn btn-primary" data-scroll-contact type="button">
                 ¿Necesitás una solución personalizada? Hablemos
               </button>
             </div>
@@ -919,14 +1030,80 @@
           </article>
         </div>
       </section>
+
+      <!-- Contacto funcional -->
+      <section class="section contact" id="contacto">
+        <div class="container contact-layout">
+          <div class="contact-panel">
+            <p class="eyebrow">Contacto</p>
+            <h2>Coordinemos un diagnóstico sin cargo</h2>
+            <p>
+              Contanos qué vendés, dónde querés crecer y qué canales digitales
+              usás hoy. Te respondemos con una primera orientación clara para
+              tu empresa agro.
+            </p>
+            <div class="contact-list" aria-label="Canales de contacto">
+              <a href="mailto:hola@weagro.com.ar">✉️ hola@weagro.com.ar</a>
+              <a href="https://wa.me/5490000000000" target="_blank" rel="noreferrer">
+                💬 WhatsApp WEAGRO
+              </a>
+            </div>
+          </div>
+
+          <form class="card contact-form" id="contactForm">
+            <div class="form-row">
+              <label for="name">Nombre</label>
+              <input id="name" name="name" type="text" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-row">
+              <label for="company">Empresa</label>
+              <input id="company" name="company" type="text" placeholder="Nombre de la empresa" required />
+            </div>
+            <div class="form-row">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="nombre@empresa.com" required />
+            </div>
+            <div class="form-row">
+              <label for="service">Servicio de interés</label>
+              <select id="service" name="service" required>
+                <option value="">Seleccionar servicio</option>
+                <option>Páginas web agro</option>
+                <option>Tiendas online</option>
+                <option>Diseño y branding</option>
+                <option>Redes sociales</option>
+                <option>Video y audio</option>
+                <option>SEO</option>
+                <option>Webapps a medida</option>
+                <option>Diagnóstico integral</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label for="message">Mensaje</label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Contanos brevemente qué necesitás resolver."
+                required
+              ></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">
+              Enviar consulta
+            </button>
+            <p class="form-note">
+              El formulario abre tu cliente de correo con el mensaje armado.
+              Luego podemos conectarlo a Formspree, Resend o un backend propio.
+            </p>
+          </form>
+        </div>
+      </section>
     </main>
 
     <!-- Footer / Ultimo CTA -->
-    <footer class="footer-cta" id="contacto">
+    <footer class="footer-cta">
       <div class="container">
         <div class="footer-grid">
           <h2>¿Tu empresa agro ya está lista para dar el siguiente salto digital?</h2>
-          <button class="btn" data-cta type="button">
+          <button class="btn" data-scroll-contact type="button">
             Empezá con un diagnóstico sin cargo
           </button>
         </div>
@@ -942,7 +1119,8 @@
       );
       const estimateTotal = document.getElementById("estimateTotal");
       const estimateMessage = document.getElementById("estimateMessage");
-      const ctaButtons = document.querySelectorAll("[data-cta]");
+      const contactButtons = document.querySelectorAll("[data-scroll-contact]");
+      const contactForm = document.getElementById("contactForm");
       const formatter = new Intl.NumberFormat("es-AR", {
         style: "currency",
         currency: "ARS",
@@ -975,12 +1153,31 @@
         checkbox.addEventListener("change", updateEstimate);
       });
 
-      ctaButtons.forEach((button) => {
+      contactButtons.forEach((button) => {
         button.addEventListener("click", () => {
-          alert(
-            "Gracias por contactar a WEAGRO. Te responderemos para coordinar un diagnóstico sin cargo.",
-          );
+          document.getElementById("contacto").scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
         });
+      });
+
+      contactForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(contactForm);
+        const subject = `Consulta WEAGRO - ${formData.get("company")}`;
+        const body = [
+          `Nombre: ${formData.get("name")}`,
+          `Empresa: ${formData.get("company")}`,
+          `Email: ${formData.get("email")}`,
+          `Servicio: ${formData.get("service")}`,
+          "",
+          `Mensaje: ${formData.get("message")}`,
+        ].join("\n");
+
+        window.location.href = `mailto:hola@weagro.com.ar?subject=${encodeURIComponent(
+          subject,
+        )}&body=${encodeURIComponent(body)}`;
       });
     </script>
   </body>
