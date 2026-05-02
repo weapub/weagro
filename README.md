@@ -1,6 +1,8 @@
 # WEAGRO Landing
 
-Landing page responsive para WEAGRO, una agencia de servicios digitales orientada al agro.
+Servicios digitales orientados al agro.
+
+Landing page responsive para WEAGRO, una agencia de servicios digitales para empresas agropecuarias del NEA.
 
 ## Stack
 
@@ -40,14 +42,3 @@ Al importar el repositorio desde GitHub en Vercel, usar:
 - Output Directory: `dist`
 
 El archivo `vercel.json` ya deja esos valores configurados.
-
-## Subir a GitHub
-
-```bash
-git init
-git add .
-git commit -m "Initial WEAGRO landing"
-git branch -M main
-git remote add origin https://github.com/USUARIO/NOMBRE-DEL-REPO.git
-git push -u origin main
-```
