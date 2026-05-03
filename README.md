@@ -17,7 +17,7 @@ Landing page responsive para WEAGRO, una agencia de servicios digitales para emp
 
 En `index.html` se pueden ajustar estos valores:
 
-- Email de contacto: buscar `hola@weagro.com.ar`
+- Email de contacto: buscar `info@weagro.com.ar`
 - WhatsApp: buscar `543704602028` y reemplazar por el numero real si cambia
 - Google Analytics: reemplazar `G-XXXXXXXXXX` por el ID de medicion real y descomentar el bloque del `<head>`
 - Dominio/canonical/OG: reemplazar `https://weagro.vercel.app/` por el dominio definitivo cuando este configurado
