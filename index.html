@@ -419,6 +419,59 @@
         width: 34px;
       }
 
+      /* Planes */
+      .packages-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .package-card {
+        display: grid;
+        gap: 20px;
+        padding: 26px;
+      }
+
+      .package-card.featured {
+        background: var(--green-dark);
+        color: var(--white);
+      }
+
+      .package-card.featured h3,
+      .package-card.featured .package-price {
+        color: var(--white);
+      }
+
+      .package-card.featured p,
+      .package-card.featured li {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .package-price {
+        color: var(--green);
+        font-size: 1.8rem;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .package-list {
+        color: var(--muted);
+        display: grid;
+        gap: 9px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .package-list li::before {
+        color: var(--green);
+        content: "✓ ";
+        font-weight: 900;
+      }
+
+      .package-card.featured .package-list li::before {
+        color: var(--field);
+      }
+
       /* Estimador */
       .estimator-layout {
         display: grid;
@@ -428,6 +481,12 @@
       .checkbox-list {
         display: grid;
         gap: 12px;
+      }
+
+      .estimator-controls {
+        display: grid;
+        gap: 14px;
+        margin: 24px 0;
       }
 
       .check-row {
@@ -478,6 +537,19 @@
       .estimate-message {
         color: var(--gray);
         margin-bottom: 0;
+      }
+
+      .estimate-details {
+        color: var(--muted);
+        display: none;
+        font-size: 0.95rem;
+        margin: 16px 0 0;
+        padding-left: 18px;
+      }
+
+      .estimate-actions {
+        display: none;
+        margin-top: 22px;
       }
 
       /* Testimonios */
@@ -703,6 +775,10 @@
           grid-template-columns: repeat(2, 1fr);
         }
 
+        .packages-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
         .estimator-layout {
           grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
         }
@@ -796,6 +872,7 @@
         <nav class="nav-menu" aria-label="Navegacion principal">
           <a href="#inicio">Inicio</a>
           <a href="#servicios">Servicios</a>
+          <a href="#planes">Planes</a>
           <a href="#clientes">Clientes</a>
           <a href="#contacto">Contacto</a>
         </nav>
@@ -1041,6 +1118,64 @@
         </div>
       </section>
 
+      <!-- Planes de trabajo -->
+      <section class="section" id="planes">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Planes de trabajo</p>
+            <h2>Tres formas simples de empezar a digitalizar tu empresa.</h2>
+            <p class="lead">
+              Elegimos el alcance según el momento del negocio: presencia,
+              crecimiento comercial o sistemas a medida.
+            </p>
+          </div>
+          <div class="packages-grid">
+            <article class="card package-card">
+              <div>
+                <p class="eyebrow">Starter</p>
+                <h3>Presencia Agro</h3>
+                <p>Para empresas que necesitan verse profesionales y empezar a captar consultas.</p>
+              </div>
+              <div class="package-price">Desde diagnóstico</div>
+              <ul class="package-list">
+                <li>Landing o sitio institucional</li>
+                <li>Identidad visual base</li>
+                <li>Formulario y WhatsApp</li>
+                <li>SEO inicial</li>
+              </ul>
+            </article>
+            <article class="card package-card featured">
+              <div>
+                <p class="eyebrow">Crecimiento</p>
+                <h3>Sistema Comercial Digital</h3>
+                <p>Para generar demanda, ordenar contactos y medir oportunidades reales.</p>
+              </div>
+              <div class="package-price">Recomendado</div>
+              <ul class="package-list">
+                <li>Web o catálogo comercial</li>
+                <li>Campañas y contenidos</li>
+                <li>Automatización de consultas</li>
+                <li>Dashboard comercial</li>
+              </ul>
+            </article>
+            <article class="card package-card">
+              <div>
+                <p class="eyebrow">A medida</p>
+                <h3>Software Agro</h3>
+                <p>Para empresas que necesitan herramientas propias y procesos más ordenados.</p>
+              </div>
+              <div class="package-price">Proyecto custom</div>
+              <ul class="package-list">
+                <li>Webapp interna o externa</li>
+                <li>Paneles y formularios</li>
+                <li>Integraciones con herramientas</li>
+                <li>Soporte evolutivo</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <!-- Estimador de inversion interactivo -->
       <section class="section" id="estimador">
         <div class="container estimator-layout">
@@ -1051,33 +1186,52 @@
               Seleccioná los servicios que necesitás y obtené una estimación al
               instante.
             </p>
+            <div class="estimator-controls">
+              <div class="form-row">
+                <label for="companyType">Tipo de empresa</label>
+                <select id="companyType">
+                  <option value="1">Productor / emprendimiento</option>
+                  <option value="1.15">PyME agropecuaria</option>
+                  <option value="1.3">Cooperativa / distribuidor</option>
+                  <option value="1.5">Agroindustria / red comercial</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="urgency">Prioridad</label>
+                <select id="urgency">
+                  <option value="1">Planificado</option>
+                  <option value="1.15">Necesario este mes</option>
+                  <option value="1.3">Urgente</option>
+                </select>
+              </div>
+            </div>
             <div class="checkbox-list" aria-label="Servicios a estimar">
               <label class="check-row">
-                <input type="checkbox" value="150" />
+                <input type="checkbox" value="260000" />
                 <span>Páginas web agro</span>
               </label>
               <label class="check-row">
-                <input type="checkbox" value="150" />
+                <input type="checkbox" value="380000" />
                 <span>Tiendas online</span>
               </label>
               <label class="check-row">
-                <input type="checkbox" value="150" />
+                <input type="checkbox" value="220000" />
                 <span>Diseño y branding</span>
               </label>
               <label class="check-row">
-                <input type="checkbox" value="150" />
+                <input type="checkbox" value="180000" />
                 <span>Redes sociales</span>
               </label>
               <label class="check-row">
-                <input type="checkbox" value="150" />
+                <input type="checkbox" value="240000" />
                 <span>Video y audio</span>
               </label>
               <label class="check-row">
-                <input type="checkbox" value="150" />
+                <input type="checkbox" value="160000" />
                 <span>SEO</span>
               </label>
               <label class="check-row">
-                <input type="checkbox" value="150" />
+                <input type="checkbox" value="520000" />
                 <span>Webapps a medida</span>
               </label>
             </div>
@@ -1089,6 +1243,12 @@
             <p class="estimate-message" id="estimateMessage">
               Seleccioná al menos un servicio para ver la estimación.
             </p>
+            <ul class="estimate-details" id="estimateDetails"></ul>
+            <div class="estimate-actions" id="estimateActions">
+              <button class="btn btn-primary" id="sendEstimate" type="button">
+                Enviar resumen por WhatsApp
+              </button>
+            </div>
           </aside>
         </div>
       </section>
@@ -1211,8 +1371,13 @@
       const serviceCheckboxes = document.querySelectorAll(
         '.checkbox-list input[type="checkbox"]',
       );
+      const companyType = document.getElementById("companyType");
+      const urgency = document.getElementById("urgency");
       const estimateTotal = document.getElementById("estimateTotal");
       const estimateMessage = document.getElementById("estimateMessage");
+      const estimateDetails = document.getElementById("estimateDetails");
+      const estimateActions = document.getElementById("estimateActions");
+      const sendEstimate = document.getElementById("sendEstimate");
       const contactButtons = document.querySelectorAll("[data-scroll-contact]");
       const contactForm = document.getElementById("contactForm");
       const contactStatus = document.getElementById("contactStatus");
@@ -1238,6 +1403,30 @@
         link.href = `https://wa.me/${whatsappNumber}?text=${defaultWhatsappMessage}`;
       });
 
+      function getSelectedServices() {
+        return Array.from(serviceCheckboxes)
+          .filter((checkbox) => checkbox.checked)
+          .map((checkbox) => ({
+            name: checkbox.nextElementSibling.textContent.trim(),
+            value: Number(checkbox.value),
+          }));
+      }
+
+      function getEstimateData() {
+        const services = getSelectedServices();
+        const subtotal = services.reduce((sum, service) => sum + service.value, 0);
+        const multiplier = Number(companyType.value) * Number(urgency.value);
+        const adjusted = Math.round((subtotal * multiplier) / 1000) * 1000;
+
+        return {
+          services,
+          min: Math.round((adjusted * 0.85) / 1000) * 1000,
+          max: Math.round((adjusted * 1.2) / 1000) * 1000,
+          companyType: companyType.options[companyType.selectedIndex].text,
+          urgency: urgency.options[urgency.selectedIndex].text,
+        };
+      }
+
       function updateEstimate() {
         const selected = Array.from(serviceCheckboxes).filter(
           (checkbox) => checkbox.checked,
@@ -1260,6 +1449,34 @@
           "Valor estimativo ficticio. Coordinemos un diagnóstico para armar una propuesta real.";
       }
 
+      function updateEstimate() {
+        const estimate = getEstimateData();
+
+        if (estimate.services.length === 0) {
+          estimateTotal.style.display = "none";
+          estimateDetails.style.display = "none";
+          estimateActions.style.display = "none";
+          estimateDetails.innerHTML = "";
+          estimateMessage.textContent =
+            "Selecciona al menos un servicio para ver la estimacion.";
+          return;
+        }
+
+        estimateTotal.style.display = "block";
+        estimateDetails.style.display = "block";
+        estimateActions.style.display = "block";
+        estimateTotal.textContent = `${formatter.format(estimate.min)} - ${formatter.format(
+          estimate.max,
+        )}`;
+        estimateMessage.textContent =
+          "Rango orientativo para dimensionar el proyecto. El diagnostico permite ajustar alcance, tiempos y prioridades.";
+        estimateDetails.innerHTML = [
+          `<li>Servicios: ${estimate.services.map((service) => service.name).join(", ")}</li>`,
+          `<li>Empresa: ${estimate.companyType}</li>`,
+          `<li>Prioridad: ${estimate.urgency}</li>`,
+        ].join("");
+      }
+
       serviceCheckboxes.forEach((checkbox) => {
         checkbox.addEventListener("change", () => {
           updateEstimate();
@@ -1268,6 +1485,32 @@
             checked: checkbox.checked,
           });
         });
+      });
+
+      companyType.addEventListener("change", updateEstimate);
+      urgency.addEventListener("change", updateEstimate);
+
+      sendEstimate.addEventListener("click", () => {
+        const estimate = getEstimateData();
+        const message = [
+          "Hola WEAGRO, quiero revisar esta estimacion.",
+          "",
+          `Servicios: ${estimate.services.map((service) => service.name).join(", ")}`,
+          `Tipo de empresa: ${estimate.companyType}`,
+          `Prioridad: ${estimate.urgency}`,
+          `Rango estimado: ${formatter.format(estimate.min)} - ${formatter.format(estimate.max)}`,
+        ].join("\n");
+
+        trackEvent("estimate_whatsapp_click", {
+          services_count: estimate.services.length,
+          min: estimate.min,
+          max: estimate.max,
+        });
+        window.open(
+          `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+          "_blank",
+          "noopener,noreferrer",
+        );
       });
 
       contactButtons.forEach((button) => {
