@@ -1133,9 +1133,22 @@ h3 {
 
 .form-status {
   background: var(--green-soft);
+  border: 1px solid rgba(47, 107, 79, 0.16);
+  color: var(--green-dark);
+  font-weight: 600;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 12px;
   display: none;
+}
+
+.form-status.success {
+  background: #edf7f1;
+  border-color: rgba(47, 107, 79, 0.2);
+}
+
+.form-status.error {
+  background: #fff7ed;
+  border-color: rgba(217, 201, 155, 0.8);
 }
 
 /* --- Footer --- */

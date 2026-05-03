@@ -251,26 +251,60 @@ whatsappLinks.forEach((link) => {
 contactForm.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(contactForm);
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  const payload = {
+    name: formData.get("name"),
+    company: formData.get("company"),
+    email: formData.get("email"),
+    service: formData.get("service"),
+    message: formData.get("message"),
+  };
   const message = [
     "Hola WEAGRO, quiero coordinar un diagnóstico sin cargo.",
     "",
-    `Nombre: ${formData.get("name")}`,
-    `Empresa: ${formData.get("company")}`,
-    `Email: ${formData.get("email")}`,
-    `Servicio de interés: ${formData.get("service")}`,
-    `Mensaje: ${formData.get("message")}`,
+    `Nombre: ${payload.name}`,
+    `Empresa: ${payload.company}`,
+    `Email: ${payload.email}`,
+    `Servicio de interés: ${payload.service}`,
+    `Mensaje: ${payload.message}`,
   ].join("\n");
   
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-  trackEvent("contact_form_submit", {
-    service: formData.get("service"),
-  });
-  
+  trackEvent("contact_form_submit", { service: payload.service });
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Enviando...";
+  contactStatus.className = "form-status";
   contactStatus.style.display = "block";
-  setTimeout(() => {
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-  }, 500);
+  contactStatus.textContent = "Estamos enviando tu consulta por email.";
+
+  fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  })
+    .then(async (response) => {
+      if (!response.ok) {
+        const errorBody = await response.json().catch(() => ({}));
+        throw new Error(errorBody.error || "No se pudo enviar el email.");
+      }
+
+      contactStatus.className = "form-status success";
+      contactStatus.textContent =
+        "Consulta enviada. Gracias, te vamos a responder a la brevedad.";
+      contactForm.reset();
+      trackEvent("contact_email_sent", { service: payload.service });
+    })
+    .catch(() => {
+      contactStatus.className = "form-status error";
+      contactStatus.innerHTML = `No pudimos enviar el email ahora. <a href="${whatsappUrl}" target="_blank" rel="noreferrer">Continuar por WhatsApp</a>.`;
+      trackEvent("contact_email_failed", { service: payload.service });
+    })
+    .finally(() => {
+      submitButton.disabled = false;
+      submitButton.textContent = "Enviar consulta";
+    });
 });
 
 // Lógica del Slider de Testimonios

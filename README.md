@@ -7,11 +7,12 @@ Landing page responsive para WEAGRO, una agencia de servicios digitales para emp
 ## Stack
 
 - HTML5 standalone
-- CSS3 embebido
-- JavaScript minimo embebido
-- Tipografia Rubik desde Google Fonts
+- CSS3 separado en `style.css`
+- JavaScript minimo en `main.js`
+- Tipografias Nunito + Poppins desde Google Fonts
 - Vite para desarrollo local y build de produccion
 - Vercel para despliegue
+- Vercel Functions + Resend para el envio de consultas por email
 
 ## Configuracion editable
 
@@ -22,6 +23,24 @@ En `index.html` se pueden ajustar estos valores:
 - Google Analytics: reemplazar `G-XXXXXXXXXX` por el ID de medicion real y descomentar el bloque del `<head>`
 - Dominio/canonical/OG: reemplazar `https://weagro.vercel.app/` por el dominio definitivo cuando este configurado
 - Favicon y preview social: editar `public/favicon.png` y `public/og-image.svg`
+
+## Formulario de contacto
+
+El formulario envia consultas por email usando la funcion serverless `api/contact.js`.
+
+Para activarlo en Vercel, configurar estas variables de entorno:
+
+```text
+RESEND_API_KEY=...
+CONTACT_FROM_EMAIL=WEAGRO <contacto@tudominio.com>
+CONTACT_TO_EMAIL=info@weagro.com.ar
+```
+
+Notas:
+
+- `CONTACT_FROM_EMAIL` debe pertenecer a un dominio verificado en Resend.
+- `CONTACT_TO_EMAIL` es opcional; si no se define, usa `info@weagro.com.ar`.
+- Para probar el envio localmente conviene usar `vercel dev`, porque Vite no ejecuta la carpeta `api/`.
 
 ## Desarrollo local
 
@@ -56,9 +75,9 @@ El archivo `vercel.json` ya deja esos valores configurados.
 
 ## Futuras Mejoras Sugeridas
 
-- [x] **Optimización SEO:** Implementar Schema.org (JSON-LD) para servicios locales.
-- [ ] **Performance:** Convertir imágenes a formato WebP/AVIF y añadir `loading="lazy"`.
+- [x] **Optimizacion SEO:** Implementar Schema.org (JSON-LD) para servicios locales.
+- [ ] **Performance:** Convertir imagenes a formato WebP/AVIF y anadir `loading="lazy"`.
 - [ ] **Accesibilidad (A11y):** Asegurar contraste de colores y etiquetas ARIA en el formulario/botones.
-- [x] **Arquitectura CSS:** Migrar el CSS embebido a archivos `.css` separados aprovechando los módulos de Vite para mejor mantenibilidad.
-- [x] **PWA:** Añadir un `manifest.webmanifest` para que la landing pueda "instalarse" en dispositivos móviles de clientes en el campo.
-- [ ] **Formulario de Contacto:** Integrar un servicio de manejo de formularios (como Formspree o Netlify Forms) para evitar el `mailto:` directo.
+- [x] **Arquitectura CSS:** Migrar el CSS embebido a archivos `.css` separados aprovechando los modulos de Vite para mejor mantenibilidad.
+- [x] **PWA:** Anadir un `manifest.webmanifest` para que la landing pueda "instalarse" en dispositivos moviles de clientes en el campo.
+- [x] **Formulario de Contacto:** Enviar consultas por email con Vercel Functions y Resend.
