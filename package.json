@@ -8,7 +8,8 @@
     "dev": "vite --host 127.0.0.1",
     "build": "vite build",
     "preview": "vite preview --host 127.0.0.1",
-    "start": "vite preview --host 127.0.0.1"
+    "start": "vite preview --host 127.0.0.1",
+    "deploy": "git add . && git commit -m \"$npm_config_message\" && git push origin main"
   },
   "keywords": [
     "landing-page",
