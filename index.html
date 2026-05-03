@@ -463,6 +463,121 @@
         font-weight: 700;
       }
 
+      /* Pilares visuales */
+      .hero-pillars {
+        margin-top: -46px;
+        padding-bottom: 32px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .pillar-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .pillar-card {
+        align-items: end;
+        aspect-ratio: 1.18 / 1;
+        background:
+          linear-gradient(180deg, rgba(18, 58, 36, 0.05), rgba(18, 58, 36, 0.78)),
+          var(--pillar-image) center / cover;
+        border: 10px solid var(--white);
+        border-radius: 28px;
+        box-shadow: 0 24px 60px rgba(18, 58, 36, 0.14);
+        color: var(--white);
+        display: flex;
+        min-height: 220px;
+        overflow: hidden;
+        padding: 22px;
+        position: relative;
+      }
+
+      .pillar-card::before {
+        background: rgba(0, 230, 109, 0.9);
+        border-radius: 999px;
+        content: "";
+        height: 42px;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        width: 42px;
+      }
+
+      .pillar-card h3 {
+        color: var(--white);
+        font-size: 1.28rem;
+        margin-bottom: 6px;
+      }
+
+      .pillar-card p {
+        color: rgba(255, 255, 255, 0.78);
+        margin-bottom: 0;
+      }
+
+      /* Indicadores estilo agro */
+      .growth-band {
+        background:
+          linear-gradient(135deg, var(--charcoal), #163c27),
+          radial-gradient(circle at 80% 20%, rgba(0, 230, 109, 0.28), transparent 30%);
+        color: var(--white);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .growth-band::after {
+        border: 14px solid rgba(255, 255, 255, 0.12);
+        border-left-color: var(--green);
+        border-radius: 50%;
+        content: "";
+        height: 260px;
+        position: absolute;
+        right: -72px;
+        top: 48px;
+        transform: rotate(-22deg);
+        width: 260px;
+      }
+
+      .growth-layout {
+        align-items: center;
+        display: grid;
+        gap: 32px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .growth-band h2 {
+        color: var(--white);
+      }
+
+      .growth-band .lead {
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .growth-stats {
+        display: grid;
+        gap: 14px;
+      }
+
+      .growth-stat {
+        background: rgba(255, 255, 255, 0.09);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 18px;
+        padding: 18px;
+      }
+
+      .growth-stat strong {
+        color: var(--green);
+        display: block;
+        font-size: clamp(2rem, 5vw, 4rem);
+        line-height: 1;
+      }
+
+      .growth-stat span {
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 800;
+      }
+
       /* Servicios */
       .section-heading {
         margin-bottom: 34px;
@@ -1009,6 +1124,10 @@
           grid-template-columns: repeat(3, 1fr);
         }
 
+        .pillar-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
         .hero-grid {
           grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
         }
@@ -1023,6 +1142,14 @@
 
         .why-layout {
           grid-template-columns: 0.9fr 1.1fr;
+        }
+
+        .growth-layout {
+          grid-template-columns: minmax(0, 0.86fr) minmax(320px, 0.8fr);
+        }
+
+        .growth-stats {
+          grid-template-columns: repeat(3, 1fr);
         }
 
         .why-grid {
@@ -1118,6 +1245,11 @@
           min-height: 68px;
         }
 
+        .hero-pillars {
+          margin-top: 0;
+          padding-top: 18px;
+        }
+
         .whatsapp-float {
           bottom: 12px;
           left: 16px;
@@ -1199,6 +1331,39 @@
               <span>Una presencia comercial pensada para vender con confianza.</span>
             </div>
           </aside>
+        </div>
+      </section>
+
+      <!-- Pilares visuales -->
+      <section class="hero-pillars" aria-label="Pilares WEAGRO">
+        <div class="container pillar-grid">
+          <article
+            class="pillar-card"
+            style="--pillar-image: url('https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800&q=80')"
+          >
+            <div>
+              <h3>Presencia que genera confianza</h3>
+              <p>Webs, identidad y contenidos para vender con mejor primera impresión.</p>
+            </div>
+          </article>
+          <article
+            class="pillar-card"
+            style="--pillar-image: url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=800&q=80')"
+          >
+            <div>
+              <h3>Demanda comercial medible</h3>
+              <p>Campañas, SEO y canales digitales pensados para captar consultas reales.</p>
+            </div>
+          </article>
+          <article
+            class="pillar-card"
+            style="--pillar-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80')"
+          >
+            <div>
+              <h3>Software que ordena procesos</h3>
+              <p>Webapps, formularios y paneles para operar con más claridad.</p>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -1296,6 +1461,35 @@
               <h3>Cercanía con el cliente</h3>
               <p>Trabajamos con seguimiento directo, claridad y acompañamiento real.</p>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Indicadores -->
+      <section class="section growth-band" aria-label="Indicadores de crecimiento digital">
+        <div class="container growth-layout">
+          <div>
+            <p class="eyebrow">Crecimiento digital</p>
+            <h2>Del campo a la pantalla, con estrategia y seguimiento.</h2>
+            <p class="lead">
+              Como en una campaña agrícola, cada acción digital necesita suelo,
+              siembra, medición y mejora. WEAGRO ordena ese proceso para que tu
+              empresa gane presencia, consultas y control comercial.
+            </p>
+          </div>
+          <div class="growth-stats">
+            <div class="growth-stat">
+              <strong>01</strong>
+              <span>Diagnóstico y mapa de oportunidades</span>
+            </div>
+            <div class="growth-stat">
+              <strong>02</strong>
+              <span>Implementación visual, técnica y comercial</span>
+            </div>
+            <div class="growth-stat">
+              <strong>03</strong>
+              <span>Medición para optimizar cada canal</span>
+            </div>
           </div>
         </div>
       </section>
