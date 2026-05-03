@@ -1,33 +1,33 @@
 :root {
-  /* Verde Primario - Neón */
-  --green: #01EE6C;        /* Spring Green - Vibrante Neón */
-  --green-mid: #1B2F24;    /* Brunswick Green - Profundo */
-  --green-bright: #01EE6C; 
-  --green-deep: #1B2F24;   
-  --green-dark: #1E1E1E;   /* Eerie Black - Carbon */
-  --green-soft: rgba(1, 238, 108, 0.08); /* Neón muy lavado para fondos */
+  /* Verde Primario - Panorama Natural */
+  --green: #5A8C27;        /* Color 2 - Verde Medio */
+  --green-mid: #4E7329;    /* Color 3 - Oliva */
+  --green-bright: #A6BF8E; /* Color 4 - Salvia */
+  --green-deep: #254019;   /* Color 1 - Bosque Oscuro */
+  --green-dark: #1A2B11;   /* Texto y contrastes oscuros */
+  --green-soft: #F4F6F0;   /* Fondo orgánico suave */
   
-  /* Paleta Secundaria - Oro & Tierra */
-  --gold: #D4A574;         /* Gold/Tierra - Acentos complementarios */
-  --gold-light: #E8C9A0;   /* Gold claro - Hover states */
-  --earth-dark: #8B6F47;   /* Tierra oscura - Acentos fuertes */
-  --earth-bg: rgba(212, 165, 116, 0.08); /* Fondo tierra sutil */
+  /* Paleta Secundaria - Paisaje */
+  --gold: #BBBF9F;         /* Color 5 - Arena/Tan */
+  --gold-light: #D5D9BC;   /* Arena claro */
+  --earth-dark: #4E7329;   /* Oliva oscuro */
+  --earth-bg: #F0F2E8;     /* Fondo orgánico sutil */
   
   /* Grises Neutrales */
-  --gray-text: #6B7280;    /* Gris para textos legibles */
-  --gray-border: #E5E7EB;  /* Bordes suaves */
+  --gray-text: #4E594D;    /* Gris verdoso para textos */
+  --gray-border: #DCE3D5;  /* Bordes suaves y naturales */
   
   /* Historicos - Manteniendo compatibilidad */
-  --field: #01EE6C;        
-  --accent-harvest: #D4A574;  /* Actualizado a oro */
-  --cream: #FEFEFE;        /* Off-white */
-  --cream-2: #D6D6D6;      /* Light Gray */
-  --charcoal: #1E1E1E;     
-  --charcoal-2: #1B2F24;   
-  --ink: #1E1E1E;          
-  --gray: #6B7280;         /* Mejorado para mejor legibilidad */
-  --muted: #9CA3AF;        /* Más legible */
-  --line: #E5E7EB;         /* Bordes más suaves */
+  --field: #A6BF8E;        
+  --accent-harvest: #5A8C27;  
+  --cream: #FBFBF7;        
+  --cream-2: #F0F2E8;      
+  --charcoal: #254019;     
+  --charcoal-2: #4E7329;   
+  --ink: #1A2B11;          
+  --gray: #3D473C;         /* Ajustado para cumplir contraste 4.5:1 sobre fondo arena */
+  --muted: #576156;        /* Ajustado para legibilidad mínima */
+  --line: #DCE3D5;         /* Bordes más integrados a la paleta */
   --bg: #FEFEFE;           
   --white: #FEFEFE;
   --shadow-sm: 0 2px 4px rgba(30, 30, 30, 0.05);
@@ -173,14 +173,14 @@ h3 {
 
 .btn-primary {
   background: var(--green);
-  box-shadow: 0 12px 28px rgba(1, 238, 108, 0.25);
-  color: var(--green-dark);
+  box-shadow: 0 12px 28px rgba(89, 140, 39, 0.2);
+  color: var(--white);
   transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-  background: #00DB63;
-  box-shadow: 0 16px 36px rgba(1, 238, 108, 0.35);
+  background: var(--green-mid);
+  box-shadow: 0 16px 36px rgba(89, 140, 39, 0.3);
   transform: translateY(-3px);
 }
 
@@ -360,8 +360,8 @@ h3 {
 /* --- Hero Section --- */
 .hero {
   background:
-    radial-gradient(circle at 84% 18%, rgba(1, 238, 108, 0.12), transparent 40%),
-    var(--green-dark);
+    radial-gradient(circle at 84% 18%, rgba(166, 191, 142, 0.15), transparent 40%),
+    var(--green-deep);
   min-height: 720px;
   padding: 96px 0 48px;
   position: relative;
@@ -393,8 +393,8 @@ h3 {
 
 .hero::after {
   background-image:
-    linear-gradient(rgba(1, 238, 108, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(1, 238, 108, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(166, 191, 142, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(166, 191, 142, 0.06) 1px, transparent 1px);
   background-size: 42px 42px;
   bottom: 0;
   content: "";
@@ -599,8 +599,8 @@ h3 {
 /* --- Growth Band - Mejorado --- */
 .growth-band {
   background:
-    linear-gradient(135deg, #0C3B2E 0%, #1B2F24 100%),
-    radial-gradient(circle at 80% 20%, rgba(212, 165, 116, 0.15), transparent 30%);
+    linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%),
+    radial-gradient(circle at 80% 20%, rgba(187, 191, 159, 0.15), transparent 30%);
   color: var(--white);
   overflow: hidden;
   position: relative;
@@ -612,16 +612,16 @@ h3 {
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(0deg, rgba(1, 238, 108, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(1, 238, 108, 0.03) 1px, transparent 1px);
+    linear-gradient(0deg, rgba(166, 191, 142, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(166, 191, 142, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
   pointer-events: none;
   z-index: 0;
 }
 
 .growth-band::after {
-  border: 14px solid rgba(212, 165, 116, 0.1);
-  border-right-color: var(--gold);
+  border: 14px solid rgba(187, 191, 159, 0.1);
+  border-right-color: var(--green-bright);
   border-radius: 50%;
   content: "";
   height: 260px;
@@ -784,8 +784,8 @@ h3 {
 /* --- Por qué WEAGRO - Paleta Tierra --- */
 .why-feature {
   background:
-    radial-gradient(circle at 90% 12%, rgba(212, 165, 116, 0.2), transparent 28%),
-    linear-gradient(135deg, #8B6F47, #6B5A3A);
+    radial-gradient(circle at 90% 12%, rgba(187, 191, 159, 0.2), transparent 28%),
+    linear-gradient(135deg, var(--green-deep), var(--green-mid));
   border-radius: 24px;
   color: var(--white);
   padding: clamp(28px, 4vw, 44px);
@@ -801,8 +801,8 @@ h3 {
   right: 0;
   bottom: 0;
   background-image: 
-    linear-gradient(45deg, rgba(212, 165, 116, 0.05) 1px, transparent 1px),
-    linear-gradient(-45deg, rgba(212, 165, 116, 0.05) 1px, transparent 1px);
+    linear-gradient(45deg, rgba(187, 191, 159, 0.05) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(187, 191, 159, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
   pointer-events: none;
   z-index: 0;
@@ -851,10 +851,10 @@ h3 {
 
 /* --- Planes --- */
 .package-card.featured {
-  background: linear-gradient(145deg, #8B6F47 0%, #6B5A3A 100%);
+  background: linear-gradient(145deg, var(--green-deep) 0%, var(--green-mid) 100%);
   color: var(--white);
   transform: translateY(-12px);
-  box-shadow: 0 24px 48px rgba(139, 111, 71, 0.25);
+  box-shadow: 0 24px 48px rgba(37, 64, 25, 0.2);
   border-color: var(--gold-light);
 }
 
@@ -929,8 +929,8 @@ h3 {
 
 .check-row:has(input:checked) {
   border-color: var(--green);
-  background-color: rgba(1, 238, 108, 0.08);
-  box-shadow: 0 4px 12px rgba(1, 238, 108, 0.1);
+  background-color: var(--green-soft);
+  box-shadow: 0 4px 12px rgba(89, 140, 39, 0.1);
 }
 
 .check-row:hover {
@@ -1019,7 +1019,7 @@ h3 {
 .contact-layout { display: grid; gap: 32px; }
 
 .contact-panel {
-  background: linear-gradient(140deg, rgba(28, 77, 43, 0.95), rgba(45, 106, 79, 0.88)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1400&q=85') center/cover;
+  background: linear-gradient(140deg, rgba(37, 64, 25, 0.95), rgba(89, 140, 39, 0.88)), url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1400&q=85') center/cover;
   border-radius: 24px;
   color: white;
   padding: clamp(28px, 5vw, 46px);
