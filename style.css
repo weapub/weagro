@@ -468,6 +468,13 @@ h3 {
 /* --- Hero Section --- */
 .hero {
   background:
+    repeating-radial-gradient(
+      ellipse at 74% 54%,
+      rgba(255, 255, 255, 0.055) 0 1px,
+      transparent 1px 22px
+    ),
+    linear-gradient(112deg, transparent 0 58%, rgba(255, 255, 255, 0.045) 58% 58.5%, transparent 58.5% 100%),
+    linear-gradient(118deg, transparent 0 66%, rgba(255, 255, 255, 0.035) 66% 66.45%, transparent 66.45% 100%),
     radial-gradient(circle at 84% 18%, rgba(166, 191, 142, 0.15), transparent 40%),
     var(--green-deep);
   min-height: 600px;
@@ -477,41 +484,42 @@ h3 {
   overflow: hidden;
 }
 
- .hero h1 {
+.hero h1 {
   color: var(--white);
 }
 
 .hero .lead {
   color: var(--white);
 }
- .hero::before {
-  border: 18px solid rgba(1, 238, 108, 0.05);
-  border-left-color: var(--green);
-  opacity: 0.4;
-  border-radius: 50%;
+.hero::before {
+  border: 18px solid rgba(255, 255, 255, 0.045);
+  border-left-color: rgba(255, 255, 255, 0.14);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  opacity: 1;
+  border-radius: 48% 52% 45% 55% / 58% 44% 56% 42%;
   content: "";
-  height: min(42vw, 420px);
+  height: min(50vw, 520px);
   position: absolute;
-  right: -120px;
-  top: 124px;
-  transform: rotate(-18deg);
-  width: min(42vw, 420px);
+  right: -140px;
+  top: 76px;
+  transform: rotate(-24deg);
+  width: min(50vw, 520px);
   z-index: -1;
 }
 
 .hero::after {
   background-image:
-    linear-gradient(rgba(166, 191, 142, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(166, 191, 142, 0.06) 1px, transparent 1px);
-  background-size: 42px 42px;
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.055) 0 2px, transparent 2px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 34px 34px, 58px 58px;
   bottom: 0;
   content: "";
   left: 0;
-  mask-image: linear-gradient(90deg, black, transparent 70%);
-  opacity: 0.35;
+  mask-image: linear-gradient(90deg, black, transparent 72%);
+  opacity: 0.42;
   position: absolute;
   top: 0;
-  width: 54%;
+  width: 58%;
   z-index: -1;
 }
 
