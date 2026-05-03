@@ -13,7 +13,7 @@
     />
     <meta name="author" content="WEAGRO" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#23CF70" />
+    <meta name="theme-color" content="#2F6B4F" />
     <link rel="canonical" href="https://weagro.vercel.app/" />
     <link rel="icon" href="./favicon.png" type="image/png" />
     <meta property="og:type" content="website" />
@@ -64,17 +64,17 @@
     </script>
     <style>
       :root {
-        --green: #23cf70;
-        --green-mid: #37a568;
-        --green-bright: #00fa70;
-        --green-deep: #3d7a59;
-        --green-dark: #355041;
-        --green-soft: #e8f8ef;
-        --field: #f3d37a;
-        --cream: #fbf6e8;
-        --cream-2: #f5edd8;
-        --charcoal: #2b332e;
-        --charcoal-2: #355041;
+        --green: #2f6b4f;
+        --green-mid: #5f8f73;
+        --green-bright: #2f6b4f;
+        --green-deep: #2f6b4f;
+        --green-dark: #25352d;
+        --green-soft: #eef5f0;
+        --field: #d9c99b;
+        --cream: #f7f4eb;
+        --cream-2: #efe8d8;
+        --charcoal: #25352d;
+        --charcoal-2: #31453a;
         --ink: #1f2937;
         --gray: #4b5563;
         --muted: #6b7280;
@@ -96,7 +96,7 @@
       body {
         margin: 0;
         background:
-          radial-gradient(circle at 12% 8%, rgba(35, 207, 112, 0.08), transparent 28%),
+          radial-gradient(circle at 12% 8%, rgba(47, 107, 79, 0.06), transparent 28%),
           linear-gradient(180deg, var(--cream) 0%, #ffffff 38%, var(--bg) 100%);
         color: var(--ink);
         font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont,
@@ -191,9 +191,9 @@
       }
 
       .btn-primary {
-        background: linear-gradient(135deg, var(--green-bright), var(--green));
-        box-shadow: 0 18px 36px rgba(35, 207, 112, 0.26);
-        color: var(--charcoal);
+        background: var(--green);
+        box-shadow: 0 18px 36px rgba(47, 107, 79, 0.22);
+        color: var(--white);
       }
 
       .btn-secondary {
@@ -214,7 +214,7 @@
       }
 
       .card:hover {
-        border-color: rgba(35, 207, 112, 0.34);
+        border-color: rgba(47, 107, 79, 0.24);
         box-shadow: 0 22px 58px rgba(31, 79, 43, 0.14);
         transform: translateY(-3px);
       }
@@ -291,7 +291,7 @@
       /* Hero */
       .hero {
         background:
-          radial-gradient(circle at 84% 18%, rgba(0, 250, 112, 0.18), transparent 28%),
+          radial-gradient(circle at 84% 18%, rgba(47, 107, 79, 0.08), transparent 28%),
           linear-gradient(135deg, var(--cream) 0%, #ffffff 48%, #ecf8ef 100%);
         min-height: 720px;
         padding: 96px 0 48px;
@@ -302,7 +302,7 @@
 
       .hero::before {
         border: 18px solid rgba(18, 58, 36, 0.1);
-        border-left-color: rgba(0, 250, 112, 0.72);
+        border-left-color: rgba(47, 107, 79, 0.6);
         border-radius: 50%;
         content: "";
         height: min(42vw, 420px);
@@ -347,8 +347,8 @@
 
       .hero .eyebrow {
         align-items: center;
-        background: rgba(35, 207, 112, 0.12);
-        border: 1px solid rgba(35, 207, 112, 0.42);
+        background: rgba(47, 107, 79, 0.08);
+        border: 1px solid rgba(47, 107, 79, 0.18);
         border-radius: 999px;
         color: var(--green);
         display: inline-flex;
@@ -497,7 +497,7 @@
       }
 
       .pillar-card::before {
-        background: var(--green-bright);
+        background: var(--green);
         border-radius: 999px;
         content: "";
         height: 42px;
@@ -522,7 +522,7 @@
       .growth-band {
         background:
           linear-gradient(135deg, var(--charcoal), var(--green-dark)),
-          radial-gradient(circle at 80% 20%, rgba(0, 250, 112, 0.26), transparent 30%);
+          radial-gradient(circle at 80% 20%, rgba(95, 143, 115, 0.18), transparent 30%);
         color: var(--white);
         overflow: hidden;
         position: relative;
@@ -530,7 +530,7 @@
 
       .growth-band::after {
         border: 14px solid rgba(255, 255, 255, 0.12);
-        border-left-color: var(--green-bright);
+        border-left-color: var(--green-mid);
         border-radius: 50%;
         content: "";
         height: 260px;
@@ -570,7 +570,7 @@
       }
 
       .growth-stat strong {
-        color: var(--green-bright);
+        color: var(--cream);
         display: block;
         font-size: clamp(2rem, 5vw, 4rem);
         line-height: 1;
@@ -633,7 +633,7 @@
       .why-icon,
       .sector-icon {
         align-items: center;
-        background: linear-gradient(135deg, rgba(35, 207, 112, 0.16), rgba(0, 250, 112, 0.12));
+        background: var(--green-soft);
         border-radius: 14px;
         display: inline-flex;
         font-size: 1.35rem;
@@ -655,7 +655,7 @@
 
       .why-feature {
         background:
-          radial-gradient(circle at 90% 12%, rgba(0, 250, 112, 0.26), transparent 28%),
+          radial-gradient(circle at 90% 12%, rgba(95, 143, 115, 0.2), transparent 28%),
           linear-gradient(135deg, var(--charcoal), var(--green-dark));
         border-radius: 24px;
         color: var(--white);
@@ -697,7 +697,7 @@
       .benefits {
         background:
           linear-gradient(135deg, rgba(230, 244, 234, 0.94), rgba(255, 255, 255, 0.94)),
-          radial-gradient(circle at 86% 18%, rgba(35, 207, 112, 0.16), transparent 28%);
+          radial-gradient(circle at 86% 18%, rgba(47, 107, 79, 0.08), transparent 28%);
       }
 
       .benefits-list {
@@ -742,7 +742,7 @@
 
       .package-card.featured {
         background:
-          radial-gradient(circle at 86% 8%, rgba(0, 250, 112, 0.28), transparent 30%),
+          radial-gradient(circle at 86% 8%, rgba(95, 143, 115, 0.2), transparent 30%),
           linear-gradient(145deg, var(--charcoal), var(--green-dark));
         color: var(--white);
         transform: translateY(-8px);
@@ -1064,11 +1064,11 @@
 
       .whatsapp-float {
         align-items: center;
-        background: var(--green-bright);
+        background: var(--green);
         border-radius: 999px;
         bottom: 18px;
-        box-shadow: 0 14px 34px rgba(0, 250, 112, 0.28);
-        color: var(--charcoal);
+        box-shadow: 0 14px 34px rgba(47, 107, 79, 0.24);
+        color: var(--white);
         display: inline-flex;
         font-weight: 900;
         gap: 8px;
