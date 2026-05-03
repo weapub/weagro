@@ -127,6 +127,97 @@ h3 {
   max-width: 710px;
 }
 
+/* --- Blur-up effect --- */
+.blur-up {
+  filter: blur(20px);
+  transition: filter 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: filter;
+}
+
+.blur-up.loaded {
+  filter: blur(0);
+}
+
+/* --- Elementos Decorativos (Fotos Transparentes) --- */
+.deco-element {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+  filter: grayscale(100%) brightness(0.8) sepia(20%) blur(var(--blur, 0px));
+  mix-blend-mode: multiply;
+  --parallax-offset: 0px;
+  transform: var(--rotation, rotate(0deg)) translateY(var(--parallax-offset));
+  transition: transform 0.1s linear;
+}
+
+.deco-wheat-1 {
+  top: -40px;
+  right: -50px;
+  width: 350px;
+  height: 450px;
+  background: url('https://images.unsplash.com/photo-1542351567-cd7b06199434?auto=format&fit=crop&w=600&q=40') center/contain no-repeat;
+  --rotation: rotate(15deg);
+  --blur: 2px;
+}
+
+.deco-machinery-1 {
+  bottom: -60px;
+  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: url('https://images.unsplash.com/photo-1594913785162-e6785b493bd2?auto=format&fit=crop&w=800&q=40') center/contain no-repeat;
+  opacity: 0.08;
+  --rotation: rotate(-10deg);
+  --blur: 4px;
+}
+
+.deco-seeds-1 {
+  top: 10%;
+  left: -30px;
+  width: 200px;
+  height: 200px;
+  background: url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=400&q=40') center/contain no-repeat;
+  opacity: 0.15;
+  --rotation: rotate(-45deg);
+}
+
+.deco-drone-1 {
+  top: 20%;
+  left: 2%;
+  width: 320px;
+  height: 320px;
+  background: url('https://images.unsplash.com/photo-1586771107445-d3ca888129ee?auto=format&fit=crop&w=600&q=30') center/contain no-repeat;
+  opacity: 0.07;
+  --rotation: rotate(-15deg);
+}
+
+.deco-leaves-2 {
+  bottom: -100px;
+  right: -50px;
+  width: 500px;
+  height: 500px;
+  background: url('https://images.unsplash.com/photo-1501004318641-729e8e26abd0?auto=format&fit=crop&w=800&q=30') center/contain no-repeat;
+  opacity: 0.06;
+  --rotation: rotate(20deg);
+  --blur: 5px;
+}
+
+/* Textura de granos para la sección de beneficios */
+.benefits {
+  background: var(--green-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.benefits::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://www.transparenttextures.com/patterns/pollen.png'); /* Sutil textura orgánica */
+  opacity: 0.4;
+}
+
 /* --- Animaciones de Revelado --- */
 .reveal {
   opacity: 1 !important;
@@ -134,6 +225,13 @@ h3 {
   transform: none !important;
   transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: opacity, transform;
+    position: relative;
+  margin-bottom: clamp(28px, 4vw, 42px);
+  position: relative;
+  z-index: 1;
+}
+
+.section-heading::before {
 }
 
 /* Solo ocultamos si JS está activo y el elemento no ha sido revelado */
@@ -512,9 +610,9 @@ h3 {
 
 .badge {
   align-items: center;
-  background: rgba(30, 30, 30, 0.15);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(1, 238, 108, 0.3);
+  border: 1px solid rgba(166, 191, 142, 0.2);
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -525,13 +623,28 @@ h3 {
 }
 
 .badge:hover {
-  border-color: var(--green);
-  background: rgba(1, 238, 108, 0.1);
-  box-shadow: 0 12px 32px rgba(1, 238, 108, 0.15);
+  border-color: var(--green-bright);
+  background: rgba(166, 191, 142, 0.1);
+  box-shadow: 0 12px 32px rgba(166, 191, 142, 0.15);
+}
+
+.badge-icon {
+  color: var(--green-bright);
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .badge strong {
-  color: var(--green);
+  color: var(--green-bright);
   display: block;
   font-family: var(--font-heading);
   font-size: 1.6rem;
@@ -702,6 +815,7 @@ h3 {
 /* --- Layouts Críticos --- */
 .why-layout {
   display: grid;
+  position: relative;
   gap: 32px;
 }
 

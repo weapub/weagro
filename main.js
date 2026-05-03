@@ -20,7 +20,49 @@ if ("serviceWorker" in navigator) {
 }
 
 // Ejecutar inicialización de SVGs al cargar el DOM
-document.addEventListener('DOMContentLoaded', initSVGAnimations);
+document.addEventListener('DOMContentLoaded', () => {
+  initSVGAnimations();
+  initBlurUp();
+});
+
+// Progressive Image Loading (Blur-up)
+function initBlurUp() {
+  const blurElements = document.querySelectorAll('.blur-up');
+  
+  const loadHighRes = (el) => {
+    const highResUrl = el.dataset.src;
+    if (!highResUrl) return;
+
+    const img = new Image();
+    img.src = highResUrl;
+    img.onload = () => {
+      if (el.tagName === 'IMG') {
+        el.src = highResUrl;
+      } else {
+        if (el.style.getPropertyValue('--pillar-image')) el.style.setProperty('--pillar-image', `url('${highResUrl}')`);
+        if (el.style.getPropertyValue('--case-image')) el.style.setProperty('--case-image', `url('${highResUrl}')`);
+      }
+      el.classList.add('loaded');
+    };
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        loadHighRes(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '100px' });
+
+  blurElements.forEach(el => {
+    if (el.closest('.hero') || el.getAttribute('loading') === 'eager') {
+      loadHighRes(el);
+    } else {
+      observer.observe(el);
+    }
+  });
+}
 
 // Animaciones de revelado al scroll
 const revealObserver = new IntersectionObserver((entries) => {
@@ -256,3 +298,15 @@ if (nextBtn && prevBtn) {
     updateSlider();
   });
 }
+
+// Efecto Parallax para elementos decorativos
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const decoElements = document.querySelectorAll('.deco-element');
+  
+  decoElements.forEach((el, index) => {
+    const speed = (index + 1) * 0.05; // Diferentes velocidades para cada uno
+    const offset = scrollY * speed;
+    el.style.setProperty('--parallax-offset', `${offset}px`);
+  });
+});

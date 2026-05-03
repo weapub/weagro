@@ -143,16 +143,31 @@
             </div>
             <div class="badges" aria-label="Datos destacados">
               <div class="badge">
-                <strong>7+</strong>
-                <span>Servicios especializados</span>
+                <div class="badge-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
+                </div>
+                <div class="badge-text">
+                  <strong>7+</strong>
+                  <span>Servicios especializados</span>
+                </div>
               </div>
               <div class="badge">
-                <strong>NEA</strong>
-                <span>Experiencia regional</span>
+                <div class="badge-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="badge-text">
+                  <strong>NEA</strong>
+                  <span>Experiencia regional</span>
+                </div>
               </div>
               <div class="badge">
-                <strong>100%</strong>
-                <span>Foco agropecuario</span>
+                <div class="badge-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C10.9 14.36 12 15 12 18s-1.1 3.64-4.92 3Z"/></svg>
+                </div>
+                <div class="badge-text">
+                  <strong>100%</strong>
+                  <span>Foco agropecuario</span>
+                </div>
               </div>
             </div>
           </div>
@@ -160,7 +175,9 @@
             <div class="hero-orbit"></div>
             <div class="hero-photo">
               <img
-                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85"
+                class="blur-up"
+                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=50&q=20"
+                data-src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85"
                 alt="Campo argentino al atardecer"
                 loading="eager"
               />
@@ -177,8 +194,9 @@
       <section class="hero-pillars" aria-label="Pilares WEAGRO">
         <div class="container pillar-grid">
           <article
-            class="pillar-card"
-            style="--pillar-image: url('https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800&q=80')"
+            class="pillar-card blur-up"
+            data-src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=800&q=80"
+            style="--pillar-image: url('https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=50&q=20')"
           >
             <div>
               <h3>Presencia que genera confianza</h3>
@@ -186,8 +204,9 @@
             </div>
           </article>
           <article
-            class="pillar-card"
-            style="--pillar-image: url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=800&q=80')"
+            class="pillar-card blur-up"
+            data-src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=800&q=80"
+            style="--pillar-image: url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=50&q=20')"
           >
             <div>
               <h3>Demanda comercial medible</h3>
@@ -195,8 +214,9 @@
             </div>
           </article>
           <article
-            class="pillar-card"
-            style="--pillar-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80')"
+            class="pillar-card blur-up"
+            data-src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=800&q=80"
+            style="--pillar-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=50&q=20')"
           >
             <div>
               <h3>Software que ordena procesos</h3>
@@ -209,6 +229,8 @@
       <!-- Servicios -->
       <section class="section" id="servicios">
         <div class="container">
+          <div class="deco-element deco-wheat-1" aria-hidden="true"></div>
+          <div class="deco-element deco-drone-1" aria-hidden="true"></div>
           <div class="section-heading">
             <p class="eyebrow">Lo que hacemos</p>
             <h2>Servicios digitales para el agro</h2>
@@ -362,6 +384,7 @@
       <!-- Clientes / Sectores -->
       <section class="section" id="clientes">
         <div class="container">
+          <div class="deco-element deco-machinery-1" aria-hidden="true"></div>
           <div class="section-heading">
             <p class="eyebrow">Clientes</p>
             <h2>¿Tu empresa es parte del agro?</h2>
@@ -434,6 +457,7 @@
       <!-- Beneficios -->
       <section class="section benefits">
         <div class="container">
+          <div class="deco-element deco-seeds-1" aria-hidden="true"></div>
           <div class="section-heading">
             <p class="eyebrow">Beneficios</p>
             <h2>Digitalizar no es solo verse mejor: es trabajar mejor.</h2>
@@ -481,6 +505,7 @@
       <!-- Planes de trabajo -->
       <section class="section" id="planes">
         <div class="container">
+          <div class="deco-element deco-leaves-2" aria-hidden="true"></div>
           <div class="section-heading">
             <p class="eyebrow">Planes de trabajo</p>
             <h2>Tres formas simples de empezar a digitalizar tu empresa.</h2>
@@ -550,9 +575,9 @@
           <div class="case-grid">
             <article class="card case-card">
               <div
-                class="case-media"
-                style="--case-image: url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=900&q=80')"
-                loading="lazy"
+                class="case-media blur-up"
+                data-src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=900&q=80"
+                style="--case-image: url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=50&q=20')"
               >
                 <span>Cabaña ganadera</span>
               </div>
@@ -577,9 +602,9 @@
 
             <article class="card case-card">
               <div
-                class="case-media"
-                style="--case-image: url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=900&q=80')"
-                loading="lazy"
+                class="case-media blur-up"
+                data-src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=900&q=80"
+                style="--case-image: url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=50&q=20')"
               >
                 <span>Insumos y distribución</span>
               </div>
@@ -604,9 +629,9 @@
 
             <article class="card case-card">
               <div
-                class="case-media"
-                style="--case-image: url('https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=900&q=80')"
-                loading="lazy"
+                class="case-media blur-up"
+                data-src="https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=900&q=80"
+                style="--case-image: url('https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=50&q=20')"
               >
                 <span>Acopio o cooperativa</span>
               </div>
