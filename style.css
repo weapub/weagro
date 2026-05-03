@@ -600,63 +600,6 @@ h3 {
   margin-top: 30px;
 }
 
-.badges {
-  display: grid;
-  gap: 12px;
-  grid-template-columns: 1fr;
-  margin-top: 36px;
-  max-width: 760px;
-}
-
-.badge {
-  align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(166, 191, 142, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  display: flex;
-  gap: 12px;
-  min-height: 76px;
-  padding: 16px;
-  transition: all 0.3s ease;
-}
-
-.badge:hover {
-  border-color: var(--green-bright);
-  background: rgba(166, 191, 142, 0.1);
-  box-shadow: 0 12px 32px rgba(166, 191, 142, 0.15);
-}
-
-.badge-icon {
-  color: var(--green-bright);
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.badge-icon svg {
-  width: 100%;
-  height: 100%;
-}
-
-.badge strong {
-  color: var(--green-bright);
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 1.6rem;
-  line-height: 1;
-}
-
-.badge span {
-  color: var(--white);
-  font-weight: 700;
-  opacity: 0.95;
-}
-
 /* --- Pilares --- */
 .hero-pillars {
   margin-top: -28px;
