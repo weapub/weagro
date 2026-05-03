@@ -68,6 +68,8 @@
         --green-dark: #123a24;
         --green-soft: #e6f4ea;
         --field: #f3d37a;
+        --cream: #fbf6e8;
+        --cream-2: #f5edd8;
         --charcoal: #1f1f1f;
         --charcoal-2: #303030;
         --ink: #1f2937;
@@ -92,7 +94,7 @@
         margin: 0;
         background:
           radial-gradient(circle at 12% 8%, rgba(0, 230, 109, 0.08), transparent 28%),
-          linear-gradient(180deg, #ffffff 0%, var(--bg) 42%, #ffffff 100%);
+          linear-gradient(180deg, var(--cream) 0%, #ffffff 38%, var(--bg) 100%);
         color: var(--ink);
         font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont,
           "Segoe UI", sans-serif;
@@ -286,10 +288,8 @@
       /* Hero */
       .hero {
         background:
-          radial-gradient(circle at 82% 24%, rgba(0, 230, 109, 0.28), transparent 28%),
-          linear-gradient(110deg, rgba(31, 31, 31, 0.94) 0%, rgba(31, 31, 31, 0.78) 44%, rgba(31, 31, 31, 0.38) 100%),
-          url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85")
-            center / cover;
+          radial-gradient(circle at 84% 18%, rgba(0, 230, 109, 0.18), transparent 28%),
+          linear-gradient(135deg, var(--cream) 0%, #ffffff 48%, #ecf8ef 100%);
         min-height: 720px;
         padding: 96px 0 48px;
         position: relative;
@@ -298,7 +298,7 @@
       }
 
       .hero::before {
-        border: 18px solid rgba(255, 255, 255, 0.18);
+        border: 18px solid rgba(18, 58, 36, 0.1);
         border-left-color: rgba(0, 230, 109, 0.7);
         border-radius: 50%;
         content: "";
@@ -313,8 +313,8 @@
 
       .hero::after {
         background-image:
-          linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+          linear-gradient(rgba(18, 58, 36, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(18, 58, 36, 0.08) 1px, transparent 1px);
         background-size: 42px 42px;
         bottom: 0;
         content: "";
@@ -330,6 +330,7 @@
       .hero-grid {
         display: grid;
         gap: 42px;
+        align-items: center;
       }
 
       .hero-content {
@@ -337,8 +338,8 @@
       }
 
       .hero h1 {
-        color: var(--white);
-        text-shadow: 0 18px 54px rgba(0, 0, 0, 0.22);
+        color: var(--green-dark);
+        text-shadow: none;
       }
 
       .hero .eyebrow {
@@ -352,8 +353,74 @@
       }
 
       .hero-content .lead {
-        color: rgba(255, 255, 255, 0.84);
+        color: var(--gray);
         font-size: clamp(1.05rem, 2vw, 1.28rem);
+      }
+
+      .hero-visual {
+        display: none;
+        position: relative;
+      }
+
+      .hero-photo {
+        aspect-ratio: 0.9 / 1;
+        border: 14px solid var(--white);
+        border-radius: 46% 54% 42% 58% / 58% 44% 56% 42%;
+        box-shadow: 0 28px 80px rgba(18, 58, 36, 0.22);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hero-photo img {
+        display: block;
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+
+      .hero-photo::after {
+        background: linear-gradient(180deg, transparent 45%, rgba(18, 58, 36, 0.54));
+        content: "";
+        inset: 0;
+        position: absolute;
+      }
+
+      .hero-floating-card {
+        background: var(--charcoal);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 22px;
+        bottom: 32px;
+        box-shadow: 0 20px 48px rgba(31, 31, 31, 0.24);
+        color: var(--white);
+        left: -30px;
+        max-width: 250px;
+        padding: 18px;
+        position: absolute;
+      }
+
+      .hero-floating-card strong {
+        color: var(--green);
+        display: block;
+        font-size: 2rem;
+        line-height: 1;
+      }
+
+      .hero-floating-card span {
+        color: rgba(255, 255, 255, 0.76);
+        font-weight: 700;
+      }
+
+      .hero-orbit {
+        border: 8px solid rgba(18, 58, 36, 0.12);
+        border-right-color: var(--green);
+        border-radius: 50%;
+        height: 180px;
+        position: absolute;
+        right: -34px;
+        top: -30px;
+        transform: rotate(-28deg);
+        width: 180px;
+        z-index: -1;
       }
 
       .hero-actions {
@@ -373,11 +440,11 @@
 
       .badge {
         align-items: center;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.82);
         backdrop-filter: blur(14px);
-        border: 1px solid rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(18, 58, 36, 0.1);
         border-radius: 16px;
-        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+        box-shadow: 0 18px 42px rgba(18, 58, 36, 0.1);
         display: flex;
         gap: 12px;
         min-height: 76px;
@@ -392,7 +459,7 @@
       }
 
       .badge span {
-        color: rgba(255, 255, 255, 0.78);
+        color: var(--gray);
         font-weight: 700;
       }
 
@@ -942,6 +1009,14 @@
           grid-template-columns: repeat(3, 1fr);
         }
 
+        .hero-grid {
+          grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+        }
+
+        .hero-visual {
+          display: block;
+        }
+
         .services-grid {
           grid-template-columns: repeat(2, 1fr);
         }
@@ -1025,10 +1100,15 @@
           max-width: 190px;
         }
 
-        .hero {
-          min-height: auto;
-          padding: 72px 0 40px;
-        }
+          .hero {
+            min-height: auto;
+            padding: 72px 0 40px;
+          }
+
+          .hero::before,
+          .hero::after {
+            opacity: 0.45;
+          }
 
         .hero-actions .btn {
           width: 100%;
@@ -1106,6 +1186,19 @@
               </div>
             </div>
           </div>
+          <aside class="hero-visual" aria-hidden="true">
+            <div class="hero-orbit"></div>
+            <div class="hero-photo">
+              <img
+                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=85"
+                alt=""
+              />
+            </div>
+            <div class="hero-floating-card">
+              <strong>Digital + Agro</strong>
+              <span>Una presencia comercial pensada para vender con confianza.</span>
+            </div>
+          </aside>
         </div>
       </section>
 
