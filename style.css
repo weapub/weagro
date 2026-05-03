@@ -55,6 +55,7 @@ body {
     linear-gradient(180deg, var(--bg) 0%, #ffffff 100%);
   color: var(--ink);
   font-family: var(--font-body);
+  font-size: 0.96rem;
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -128,7 +129,7 @@ h3 {
 
 .lead {
   color: var(--gray-text);
-  font-size: 1.12rem;
+  font-size: 1.06rem;
   line-height: 1.72;
   max-width: 710px;
 }
