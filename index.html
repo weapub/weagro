@@ -220,21 +220,13 @@
         align-items: center;
         color: var(--green-dark);
         display: inline-flex;
-        font-size: 1.18rem;
-        font-weight: 900;
-        gap: 10px;
-        letter-spacing: 0.02em;
+        flex: 0 0 auto;
       }
 
-      .logo-mark {
-        align-items: center;
-        background: var(--green);
-        border-radius: 12px;
-        color: var(--white);
-        display: inline-flex;
-        height: 40px;
-        justify-content: center;
-        width: 40px;
+      .logo-image {
+        display: block;
+        height: 46px;
+        width: auto;
       }
 
       .nav-menu {
@@ -761,6 +753,11 @@
           padding: 0 16px;
         }
 
+        .logo-image {
+          height: 38px;
+          max-width: 190px;
+        }
+
         .hero {
           min-height: auto;
           padding: 72px 0 40px;
@@ -788,8 +785,13 @@
     <header class="site-header">
       <div class="container navbar">
         <a class="logo" href="#inicio" aria-label="WEAGRO inicio">
-          <span class="logo-mark">W</span>
-          <span>WEAGRO</span>
+          <img
+            class="logo-image"
+            src="/logo-weagro.png"
+            alt="WEAGRO"
+            width="919"
+            height="311"
+          />
         </a>
         <nav class="nav-menu" aria-label="Navegacion principal">
           <a href="#inicio">Inicio</a>
