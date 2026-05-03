@@ -472,6 +472,66 @@
         color: var(--field);
       }
 
+      /* Casos de uso */
+      .use-cases {
+        background: var(--white);
+      }
+
+      .case-grid {
+        display: grid;
+        gap: 16px;
+      }
+
+      .case-card {
+        overflow: hidden;
+      }
+
+      .case-media {
+        align-items: flex-end;
+        aspect-ratio: 16 / 9;
+        background:
+          linear-gradient(180deg, rgba(31, 79, 43, 0.08), rgba(31, 79, 43, 0.82)),
+          var(--case-image) center / cover;
+        color: var(--white);
+        display: flex;
+        padding: 22px;
+      }
+
+      .case-media span {
+        background: rgba(255, 255, 255, 0.16);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 999px;
+        font-size: 0.84rem;
+        font-weight: 900;
+        padding: 8px 12px;
+      }
+
+      .case-body {
+        display: grid;
+        gap: 16px;
+        padding: 24px;
+      }
+
+      .case-points {
+        display: grid;
+        gap: 10px;
+      }
+
+      .case-point {
+        border-left: 3px solid var(--green);
+        padding-left: 12px;
+      }
+
+      .case-point strong {
+        color: var(--green-dark);
+        display: block;
+        font-size: 0.88rem;
+      }
+
+      .case-point span {
+        color: var(--muted);
+      }
+
       /* Estimador */
       .estimator-layout {
         display: grid;
@@ -779,6 +839,10 @@
           grid-template-columns: repeat(3, 1fr);
         }
 
+        .case-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
         .estimator-layout {
           grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
         }
@@ -873,6 +937,7 @@
           <a href="#inicio">Inicio</a>
           <a href="#servicios">Servicios</a>
           <a href="#planes">Planes</a>
+          <a href="#casos">Casos</a>
           <a href="#clientes">Clientes</a>
           <a href="#contacto">Contacto</a>
         </nav>
@@ -1171,6 +1236,99 @@
                 <li>Integraciones con herramientas</li>
                 <li>Soporte evolutivo</li>
               </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Casos de uso -->
+      <section class="section use-cases" id="casos">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Casos de uso</p>
+            <h2>Soluciones digitales pensadas para situaciones reales del agro.</h2>
+            <p class="lead">
+              Cada proyecto parte de una necesidad concreta: vender mejor,
+              ordenar consultas o transformar procesos internos.
+            </p>
+          </div>
+          <div class="case-grid">
+            <article class="card case-card">
+              <div
+                class="case-media"
+                style="--case-image: url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=900&q=80')"
+              >
+                <span>Cabaña ganadera</span>
+              </div>
+              <div class="case-body">
+                <h3>Mostrar genética, remates y reproductores con autoridad.</h3>
+                <div class="case-points">
+                  <div class="case-point">
+                    <strong>Necesidad</strong>
+                    <span>La información estaba dispersa entre redes, PDFs y mensajes.</span>
+                  </div>
+                  <div class="case-point">
+                    <strong>Solución</strong>
+                    <span>Web institucional, catálogo de animales, branding y CTA directo a WhatsApp.</span>
+                  </div>
+                  <div class="case-point">
+                    <strong>Resultado esperado</strong>
+                    <span>Más confianza antes del primer contacto y consultas mejor calificadas.</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card case-card">
+              <div
+                class="case-media"
+                style="--case-image: url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=900&q=80')"
+              >
+                <span>Insumos y distribución</span>
+              </div>
+              <div class="case-body">
+                <h3>Convertir catálogo, stock y promociones en demanda medible.</h3>
+                <div class="case-points">
+                  <div class="case-point">
+                    <strong>Necesidad</strong>
+                    <span>Muchas consultas repetidas y poca visibilidad de productos clave.</span>
+                  </div>
+                  <div class="case-point">
+                    <strong>Solución</strong>
+                    <span>Tienda online, campañas por zona, SEO y automatización de respuestas.</span>
+                  </div>
+                  <div class="case-point">
+                    <strong>Resultado esperado</strong>
+                    <span>Menos fricción comercial y más oportunidades ordenadas por interés.</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="card case-card">
+              <div
+                class="case-media"
+                style="--case-image: url('https://images.unsplash.com/photo-1592982537447-7440770cbfc9?auto=format&fit=crop&w=900&q=80')"
+              >
+                <span>Acopio o cooperativa</span>
+              </div>
+              <div class="case-body">
+                <h3>Ordenar procesos internos y comunicación con productores.</h3>
+                <div class="case-points">
+                  <div class="case-point">
+                    <strong>Necesidad</strong>
+                    <span>Datos, pedidos y comunicaciones quedaban repartidos en planillas.</span>
+                  </div>
+                  <div class="case-point">
+                    <strong>Solución</strong>
+                    <span>Webapp a medida, formularios, paneles y reportes de seguimiento.</span>
+                  </div>
+                  <div class="case-point">
+                    <strong>Resultado esperado</strong>
+                    <span>Procesos más claros, respuestas más rápidas y mejor trazabilidad.</span>
+                  </div>
+                </div>
+              </div>
             </article>
           </div>
         </div>
