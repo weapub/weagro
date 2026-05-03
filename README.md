@@ -21,7 +21,7 @@ En `index.html` se pueden ajustar estos valores:
 - WhatsApp: buscar `543704602028` y reemplazar por el numero real si cambia
 - Google Analytics: reemplazar `G-XXXXXXXXXX` por el ID de medicion real y descomentar el bloque del `<head>`
 - Dominio/canonical/OG: reemplazar `https://weagro.vercel.app/` por el dominio definitivo cuando este configurado
-- Favicon y preview social: editar `public/favicon.svg` y `public/og-image.svg`
+- Favicon y preview social: editar `public/favicon.png` y `public/og-image.svg`
 
 ## Desarrollo local
 
