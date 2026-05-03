@@ -53,3 +53,12 @@ Al importar el repositorio desde GitHub en Vercel, usar:
 - Output Directory: `dist`
 
 El archivo `vercel.json` ya deja esos valores configurados.
+
+## Futuras Mejoras Sugeridas
+
+- [x] **Optimización SEO:** Implementar Schema.org (JSON-LD) para servicios locales.
+- [ ] **Performance:** Convertir imágenes a formato WebP/AVIF y añadir `loading="lazy"`.
+- [ ] **Accesibilidad (A11y):** Asegurar contraste de colores y etiquetas ARIA en el formulario/botones.
+- [x] **Arquitectura CSS:** Migrar el CSS embebido a archivos `.css` separados aprovechando los módulos de Vite para mejor mantenibilidad.
+- [x] **PWA:** Añadir un `manifest.webmanifest` para que la landing pueda "instalarse" en dispositivos móviles de clientes en el campo.
+- [ ] **Formulario de Contacto:** Integrar un servicio de manejo de formularios (como Formspree o Netlify Forms) para evitar el `mailto:` directo.
