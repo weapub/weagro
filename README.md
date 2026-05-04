@@ -42,6 +42,31 @@ Notas:
 - `CONTACT_TO_EMAIL` es opcional; si no se define, usa `info@weagro.com.ar`.
 - Para probar el envio localmente conviene usar `vercel dev`, porque Vite no ejecuta la carpeta `api/`.
 
+### Prueba y logs
+
+Una vez configuradas las variables en Vercel, probar el endpoint con:
+
+```bash
+curl -X POST https://weagro.com.ar/api/contact \
+  -H "Content-Type: application/json" \
+  -d "{\"name\":\"Prueba\",\"company\":\"Campo Demo\",\"email\":\"tu-email@dominio.com\",\"service\":\"Webapps a medida\",\"message\":\"Mensaje de prueba\"}"
+```
+
+Respuesta esperada:
+
+```json
+{
+  "ok": true,
+  "id": "...",
+  "requestId": "contact_..."
+}
+```
+
+Si falla, la respuesta incluye `requestId`. Buscar ese codigo en Vercel:
+
+- Project > Logs > Runtime Logs
+- Filtrar por `/api/contact` o por el `requestId`
+
 ## Desarrollo local
 
 ```bash
