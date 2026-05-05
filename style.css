@@ -319,7 +319,7 @@ h3 {
   box-shadow: 0 10px 32px rgba(31, 31, 31, 0.05);
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 200;
 }
 
 .navbar {
@@ -359,7 +359,7 @@ h3 {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.4s ease, visibility 0.4s ease;
-  z-index: 20;
+  z-index: 210;
 }
 
 .nav-overlay.active {
@@ -378,7 +378,7 @@ h3 {
   border: none;
   cursor: pointer;
   padding: 4px;
-  z-index: 30;
+  z-index: 230;
 }
 
 .hamburger span {
@@ -410,7 +410,7 @@ h3 {
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
     transform: translateX(110%);
     transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    z-index: 25;
+    z-index: 220;
   }
 
   .nav-menu.active {
@@ -1269,4 +1269,72 @@ h3 {
   font-weight: bold;
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   z-index: 100;
+}
+
+.back-to-top {
+  align-items: center;
+  background: var(--green-dark);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  bottom: 92px;
+  box-shadow: 0 12px 28px rgba(26, 43, 17, 0.18);
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 24px;
+  transform: translateY(12px);
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+  width: 48px;
+  z-index: 101;
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--green);
+}
+
+.back-to-top svg {
+  display: block;
+  height: 24px;
+  width: 24px;
+}
+
+.back-to-top path {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.4;
+}
+
+.back-to-top svg * {
+  stroke-dashoffset: 0 !important;
+}
+
+body.nav-open .whatsapp-float,
+body.nav-open .back-to-top {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .whatsapp-float {
+    bottom: 18px;
+    right: 18px;
+  }
+
+  .back-to-top {
+    bottom: 82px;
+    right: 18px;
+  }
 }

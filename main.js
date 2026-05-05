@@ -91,6 +91,7 @@ function toggleMenu() {
   if (navOverlay) navOverlay.classList.toggle('active');
   document.body.classList.toggle('nav-open');
   hamburger.setAttribute('aria-expanded', !isOpen);
+  hamburger.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
 }
 
 function closeMenu() {
@@ -99,6 +100,7 @@ function closeMenu() {
   if (navOverlay) navOverlay.classList.remove('active');
   document.body.classList.remove('nav-open');
   hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.setAttribute('aria-label', 'Abrir menú');
 }
 
 if (hamburger) {
@@ -107,6 +109,10 @@ if (hamburger) {
   
   navLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
   });
 }
 
@@ -123,6 +129,7 @@ const contactForm = document.getElementById("contactForm");
 const contactStatus = document.getElementById("contactStatus");
 const whatsappLinks = document.querySelectorAll("[data-whatsapp-link]");
 const whatsappNumber = "543704602028";
+const backToTopButton = document.querySelector("[data-back-to-top]");
 
 const formatter = new Intl.NumberFormat("es-AR", {
   style: "currency",
@@ -143,6 +150,22 @@ const defaultWhatsappMessage = encodeURIComponent(
 whatsappLinks.forEach((link) => {
   link.href = `https://wa.me/${whatsappNumber}?text=${defaultWhatsappMessage}`;
 });
+
+if (backToTopButton) {
+  const toggleBackToTop = () => {
+    const isVisible = window.scrollY > 520;
+    backToTopButton.classList.toggle("is-visible", isVisible);
+    backToTopButton.setAttribute("aria-hidden", String(!isVisible));
+    backToTopButton.tabIndex = isVisible ? 0 : -1;
+  };
+
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  toggleBackToTop();
+  window.addEventListener("scroll", toggleBackToTop, { passive: true });
+}
 
 function getSelectedServices() {
   return Array.from(serviceCheckboxes)
