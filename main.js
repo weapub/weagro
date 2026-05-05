@@ -288,21 +288,19 @@ contactForm.addEventListener("submit", (event) => {
       if (!response.ok) {
         const errorBody = await response.json().catch(() => ({}));
         const error = new Error(errorBody.error || "No se pudo enviar el email.");
-        error.requestId = errorBody.requestId;
         throw error;
       }
 
-      const result = await response.json().catch(() => ({}));
+      await response.json().catch(() => ({}));
       contactStatus.className = "form-status success";
       contactStatus.textContent =
-        `Consulta enviada. Gracias, te vamos a responder a la brevedad. ID: ${result.requestId || "ok"}.`;
+        "Consulta enviada. Gracias, te vamos a responder a la brevedad.";
       contactForm.reset();
       trackEvent("contact_email_sent", { service: payload.service });
     })
-    .catch((error) => {
-      const requestIdText = error.requestId ? ` Código: ${error.requestId}.` : "";
+    .catch(() => {
       contactStatus.className = "form-status error";
-      contactStatus.innerHTML = `No pudimos enviar el email ahora.${requestIdText} <a href="${whatsappUrl}" target="_blank" rel="noreferrer">Continuar por WhatsApp</a>.`;
+      contactStatus.innerHTML = `No pudimos enviar el email ahora. <a href="${whatsappUrl}" target="_blank" rel="noreferrer">Continuar por WhatsApp</a>.`;
       trackEvent("contact_email_failed", { service: payload.service });
     })
     .finally(() => {

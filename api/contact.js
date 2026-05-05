@@ -1,9 +1,5 @@
 const requiredFields = ["name", "company", "email", "service", "message"];
 
-function createRequestId() {
-  return `contact_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
-}
-
 function escapeHtml(value = "") {
   return String(value)
     .replaceAll("&", "&amp;")
@@ -24,14 +20,9 @@ function normalizePayload(payload = {}) {
 }
 
 export default async function handler(request, response) {
-  const requestId = createRequestId();
-
   if (request.method !== "POST") {
     response.setHeader("Allow", "POST");
-    console.warn("[contact]", requestId, "method_not_allowed", {
-      method: request.method,
-    });
-    return response.status(405).json({ error: "Method not allowed", requestId });
+    return response.status(405).json({ error: "Method not allowed" });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -39,15 +30,9 @@ export default async function handler(request, response) {
   const from = process.env.CONTACT_FROM_EMAIL;
 
   if (!apiKey || !from) {
-    console.error("[contact]", requestId, "missing_email_configuration", {
-      hasApiKey: Boolean(apiKey),
-      hasFrom: Boolean(from),
-      to,
-    });
     return response.status(503).json({
       error:
         "Email service is not configured. Set RESEND_API_KEY and CONTACT_FROM_EMAIL in Vercel.",
-      requestId,
     });
   }
 
@@ -55,11 +40,9 @@ export default async function handler(request, response) {
   const missing = requiredFields.filter((field) => !data[field]);
 
   if (missing.length > 0) {
-    console.warn("[contact]", requestId, "missing_required_fields", { missing });
     return response.status(400).json({
       error: "Missing required fields",
       fields: missing,
-      requestId,
     });
   }
 
@@ -103,44 +86,20 @@ export default async function handler(request, response) {
       }),
     });
 
-    const result = await resendResponse.json().catch(() => ({}));
+    await resendResponse.json().catch(() => ({}));
 
     if (!resendResponse.ok) {
-      console.error("[contact]", requestId, "provider_failed", {
-        status: resendResponse.status,
-        providerError: result,
-        to,
-        from,
-        service: data.service,
-      });
       return response.status(502).json({
         error: "Email provider failed",
-        requestId,
       });
     }
 
-    console.info("[contact]", requestId, "email_sent", {
-      providerId: result.id,
-      to,
-      from,
-      service: data.service,
-      company: data.company,
-    });
-
     return response.status(200).json({
       ok: true,
-      id: result.id,
-      requestId,
     });
-  } catch (error) {
-    console.error("[contact]", requestId, "unexpected_error", {
-      message: error?.message,
-      stack: error?.stack,
-    });
-
+  } catch {
     return response.status(502).json({
       error: "Unexpected email service error",
-      requestId,
     });
   }
 }
