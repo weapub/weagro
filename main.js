@@ -347,7 +347,7 @@ function renderWorks(works) {
   });
 }
 
-function renderAdminList(items, selector, emptyText, onDelete) {
+function renderAdminList(items, selector, emptyText, onEdit, onDelete) {
   const list = document.querySelector(selector);
   if (!list) return;
 
@@ -372,13 +372,23 @@ function renderAdminList(items, selector, emptyText, onDelete) {
     meta.textContent = item.sector || item.logo_url || item.logoUrl || "Sin logo cargado";
     content.append(name, meta);
 
-    const button = document.createElement("button");
-    button.className = "admin-delete";
-    button.type = "button";
-    button.textContent = "Eliminar";
-    button.addEventListener("click", () => onDelete(item.id));
+    const actions = document.createElement("div");
+    actions.className = "admin-item-actions";
 
-    row.append(content, button);
+    const editButton = document.createElement("button");
+    editButton.className = "admin-edit";
+    editButton.type = "button";
+    editButton.textContent = "Editar";
+    editButton.addEventListener("click", () => onEdit(item));
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "admin-delete";
+    deleteButton.type = "button";
+    deleteButton.textContent = "Eliminar";
+    deleteButton.addEventListener("click", () => onDelete(item.id));
+
+    actions.append(editButton, deleteButton);
+    row.append(content, actions);
     list.appendChild(row);
   });
 }
@@ -431,6 +441,12 @@ async function initPortfolioAdmin() {
   const workForm = document.querySelector("[data-work-form]");
   const loginForm = document.querySelector("[data-admin-login]");
   const logoutButton = document.querySelector("[data-admin-logout]");
+  const brandFormTitle = document.querySelector("[data-brand-form-title]");
+  const brandSubmit = document.querySelector("[data-brand-submit]");
+  const brandCancel = document.querySelector("[data-brand-cancel]");
+  const workFormTitle = document.querySelector("[data-work-form-title]");
+  const workSubmit = document.querySelector("[data-work-submit]");
+  const workCancel = document.querySelector("[data-work-cancel]");
   let brands = getStoredItems(brandStorageKey, defaultBrands);
   let works = getStoredItems(workStorageKey, defaultWorks);
 
@@ -439,13 +455,65 @@ async function initPortfolioAdmin() {
     setStoredItems(workStorageKey, works);
     renderBrandLogos(brands);
     renderWorks(works);
-    renderAdminList(brands, "[data-admin-brand-list]", "Todavía no hay marcas cargadas.", (id) => {
-      deleteBrand(id);
-    });
-    renderAdminList(works, "[data-admin-work-list]", "Todavía no hay trabajos cargados.", (id) => {
-      deleteWork(id);
-    });
+    renderAdminList(brands, "[data-admin-brand-list]", "Todavía no hay marcas cargadas.", editBrand, deleteBrand);
+    renderAdminList(works, "[data-admin-work-list]", "Todavía no hay trabajos cargados.", editWork, deleteWork);
   };
+
+  const resetBrandForm = () => {
+    brandForm?.reset();
+    if (brandForm) {
+      brandForm.elements.brandId.value = "";
+      brandForm.elements.currentLogoUrl.value = "";
+    }
+    if (brandFormTitle) brandFormTitle.textContent = "Agregar marca";
+    if (brandSubmit) brandSubmit.textContent = "Guardar marca";
+    if (brandCancel) brandCancel.hidden = true;
+  };
+
+  const resetWorkForm = () => {
+    workForm?.reset();
+    if (workForm) {
+      workForm.elements.workId.value = "";
+      workForm.elements.currentImageUrl.value = "";
+      workForm.querySelectorAll('input[name="workServices"]').forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+    }
+    if (workFormTitle) workFormTitle.textContent = "Agregar trabajo realizado";
+    if (workSubmit) workSubmit.textContent = "Guardar trabajo";
+    if (workCancel) workCancel.hidden = true;
+  };
+
+  function editBrand(brand) {
+    if (!brandForm) return;
+    brandForm.elements.brandId.value = brand.id;
+    brandForm.elements.currentLogoUrl.value = brand.logo_url || brand.logoUrl || "";
+    brandForm.elements.brandName.value = brand.name || "";
+    brandForm.elements.brandLogo.value = "";
+    if (brandFormTitle) brandFormTitle.textContent = "Editar marca";
+    if (brandSubmit) brandSubmit.textContent = "Guardar cambios";
+    if (brandCancel) brandCancel.hidden = false;
+    brandForm.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  function editWork(work) {
+    if (!workForm) return;
+    workForm.elements.workId.value = work.id;
+    workForm.elements.currentImageUrl.value = work.image_url || work.imageUrl || "";
+    workForm.elements.workCompany.value = work.company || "";
+    workForm.elements.workSector.value = work.sector || "";
+    workForm.elements.workDescription.value = work.description || "";
+    workForm.elements.workResult.value = work.result || "";
+    workForm.elements.workImage.value = "";
+    const services = new Set(work.services || []);
+    workForm.querySelectorAll('input[name="workServices"]').forEach((checkbox) => {
+      checkbox.checked = services.has(checkbox.value);
+    });
+    if (workFormTitle) workFormTitle.textContent = "Editar trabajo realizado";
+    if (workSubmit) workSubmit.textContent = "Guardar cambios";
+    if (workCancel) workCancel.hidden = false;
+    workForm.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 
   const loadFromSupabase = async () => {
     if (!supabase) {
@@ -481,6 +549,8 @@ async function initPortfolioAdmin() {
   };
 
   async function deleteBrand(id) {
+    if (!window.confirm("¿Eliminar esta marca?")) return;
+
     if (!supabase) {
       brands = brands.filter((brand) => brand.id !== id);
       sync();
@@ -497,6 +567,8 @@ async function initPortfolioAdmin() {
   }
 
   async function deleteWork(id) {
+    if (!window.confirm("¿Eliminar este trabajo realizado?")) return;
+
     if (!supabase) {
       works = works.filter((work) => work.id !== id);
       sync();
@@ -540,27 +612,38 @@ async function initPortfolioAdmin() {
     setAdminStatus("Sesión cerrada.", "info");
   });
 
+  brandCancel?.addEventListener("click", resetBrandForm);
+  workCancel?.addEventListener("click", resetWorkForm);
+
   brandForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const formData = new FormData(brandForm);
+    const id = String(formData.get("brandId") || "").trim();
     const name = String(formData.get("brandName") || "").trim();
+    const currentLogoUrl = String(formData.get("currentLogoUrl") || "").trim();
     const logoFile = fileFromForm(formData, "brandLogo");
     if (!name) return;
 
     try {
       if (!supabase) {
-        brands = [{ id: crypto.randomUUID(), name, logo_url: "" }, ...brands];
-        brandForm.reset();
+        const item = { id: id || crypto.randomUUID(), name, logo_url: currentLogoUrl };
+        brands = id
+          ? brands.map((brand) => (brand.id === id ? item : brand))
+          : [item, ...brands];
+        resetBrandForm();
         sync();
         return;
       }
 
-      const logo_url = await uploadPublicImage("logos", logoFile);
-      const { error } = await supabase.from("brands").insert({ name, logo_url });
+      const logo_url = logoFile ? await uploadPublicImage("logos", logoFile) : currentLogoUrl;
+      const request = id
+        ? supabase.from("brands").update({ name, logo_url }).eq("id", id)
+        : supabase.from("brands").insert({ name, logo_url });
+      const { error } = await request;
       if (error) throw error;
 
-      brandForm.reset();
-      setAdminStatus("Marca guardada correctamente.", "success");
+      resetBrandForm();
+      setAdminStatus(id ? "Marca actualizada correctamente." : "Marca guardada correctamente.", "success");
       await loadFromSupabase();
     } catch (error) {
       setAdminStatus(`No se pudo guardar la marca: ${error.message}`, "error");
@@ -570,10 +653,12 @@ async function initPortfolioAdmin() {
   workForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const formData = new FormData(workForm);
+    const id = String(formData.get("workId") || "").trim();
     const company = String(formData.get("workCompany") || "").trim();
     const sector = String(formData.get("workSector") || "").trim();
     const description = String(formData.get("workDescription") || "").trim();
     const result = String(formData.get("workResult") || "").trim();
+    const currentImageUrl = String(formData.get("currentImageUrl") || "").trim();
     const imageFile = fileFromForm(formData, "workImage");
     const services = formData.getAll("workServices").map((service) => String(service));
 
@@ -581,25 +666,32 @@ async function initPortfolioAdmin() {
 
     try {
       if (!supabase) {
-        works = [{ id: crypto.randomUUID(), company, sector, description, result, image_url: "", services }, ...works];
-        workForm.reset();
+        const item = { id: id || crypto.randomUUID(), company, sector, description, result, image_url: currentImageUrl, services };
+        works = id
+          ? works.map((work) => (work.id === id ? item : work))
+          : [item, ...works];
+        resetWorkForm();
         sync();
         return;
       }
 
-      const image_url = await uploadPublicImage("projects", imageFile);
-      const { error } = await supabase.from("projects").insert({
+      const image_url = imageFile ? await uploadPublicImage("projects", imageFile) : currentImageUrl;
+      const payload = {
         company,
         sector,
         description,
         result,
         image_url,
         services,
-      });
+      };
+      const request = id
+        ? supabase.from("projects").update(payload).eq("id", id)
+        : supabase.from("projects").insert(payload);
+      const { error } = await request;
       if (error) throw error;
 
-      workForm.reset();
-      setAdminStatus("Trabajo guardado correctamente.", "success");
+      resetWorkForm();
+      setAdminStatus(id ? "Trabajo actualizado correctamente." : "Trabajo guardado correctamente.", "success");
       await loadFromSupabase();
     } catch (error) {
       setAdminStatus(`No se pudo guardar el trabajo: ${error.message}`, "error");

@@ -69,7 +69,9 @@
           <div class="admin-private" data-admin-private hidden>
             <div class="admin-layout">
               <form class="card admin-card" data-brand-form>
-                <h3>Agregar marca</h3>
+                <h3 data-brand-form-title>Agregar marca</h3>
+                <input name="brandId" type="hidden" />
+                <input name="currentLogoUrl" type="hidden" />
                 <div class="form-row">
                   <label for="brandName">Nombre de la marca</label>
                   <input id="brandName" name="brandName" type="text" placeholder="Ej: Cabaña San Miguel" required />
@@ -78,11 +80,16 @@
                   <label for="brandLogo">Logo de la marca</label>
                   <input id="brandLogo" name="brandLogo" type="file" accept="image/*" />
                 </div>
-                <button class="btn btn-primary" type="submit">Guardar marca</button>
+                <div class="admin-form-actions">
+                  <button class="btn btn-primary" data-brand-submit type="submit">Guardar marca</button>
+                  <button class="btn btn-secondary" data-brand-cancel type="button" hidden>Cancelar edición</button>
+                </div>
               </form>
 
               <form class="card admin-card" data-work-form>
-                <h3>Agregar trabajo realizado</h3>
+                <h3 data-work-form-title>Agregar trabajo realizado</h3>
+                <input name="workId" type="hidden" />
+                <input name="currentImageUrl" type="hidden" />
                 <div class="form-row">
                   <label for="workCompany">Empresa</label>
                   <input id="workCompany" name="workCompany" type="text" placeholder="Nombre de la empresa" required />
@@ -113,7 +120,10 @@
                   <label><input type="checkbox" name="workServices" value="Webapp a medida" /> Webapp a medida</label>
                   <label><input type="checkbox" name="workServices" value="Automatizaciones" /> Automatizaciones</label>
                 </fieldset>
-                <button class="btn btn-primary" type="submit">Guardar trabajo</button>
+                <div class="admin-form-actions">
+                  <button class="btn btn-primary" data-work-submit type="submit">Guardar trabajo</button>
+                  <button class="btn btn-secondary" data-work-cancel type="button" hidden>Cancelar edición</button>
+                </div>
               </form>
             </div>
 

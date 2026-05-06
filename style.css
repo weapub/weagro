@@ -1281,6 +1281,14 @@ h3 {
   gap: 12px;
 }
 
+.admin-form-actions,
+.admin-item-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
 .admin-status {
   display: block;
   margin-top: 14px;
@@ -1338,6 +1346,7 @@ h3 {
   display: block;
 }
 
+.admin-edit,
 .admin-delete {
   background: transparent;
   border: 1px solid var(--gray-border);
