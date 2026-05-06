@@ -223,6 +223,7 @@
           <a href="#servicios">Servicios</a>
           <a href="#planes">Planes</a>
           <a href="#casos">Casos</a>
+          <a href="#trabajos">Trabajos</a>
           <a href="#clientes">Clientes</a>
           <a href="#contacto">Contacto</a>
         </nav>
@@ -542,6 +543,22 @@
         </div>
       </section>
 
+      <!-- Marcas que confian -->
+      <section class="section trusted-brands" id="marcas">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Marcas que confían</p>
+            <h2>Empresas del agro que eligen crecer con WEAGRO.</h2>
+            <p class="lead">
+              Un espacio para mostrar productores, acopios, cooperativas,
+              distribuidores y proveedores que confían en el trabajo digital de
+              WEAGRO.
+            </p>
+          </div>
+          <div class="brand-logo-grid" data-brand-logos></div>
+        </div>
+      </section>
+
       <!-- Beneficios -->
       <section class="section benefits">
         <div class="container">
@@ -745,6 +762,21 @@
         </div>
       </section>
 
+      <!-- Trabajos realizados -->
+      <section class="section completed-work" id="trabajos">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Trabajos realizados</p>
+            <h2>Proyectos implementados para empresas agropecuarias.</h2>
+            <p class="lead">
+              Casos cargados desde el panel admin con la empresa, el objetivo y
+              los servicios digitales implementados.
+            </p>
+          </div>
+          <div class="work-grid" data-work-list></div>
+        </div>
+      </section>
+
       <!-- Estimador de inversion interactivo -->
       <section class="section" id="estimador">
         <div class="container estimator-layout">
@@ -916,6 +948,101 @@
                 ventas, comunicación con productores y procesos internos.
               </p>
             </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel admin -->
+      <section class="section admin-section" id="admin">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Panel admin</p>
+            <h2>Cargar marcas y trabajos realizados.</h2>
+            <p class="lead">
+              Iniciá sesión para guardar logos, proyectos y servicios
+              implementados en la base de datos de WEAGRO.
+            </p>
+          </div>
+          <form class="card admin-card admin-auth" data-admin-login>
+            <h3>Acceso administrador</h3>
+            <div class="form-row">
+              <label for="adminEmail">Email</label>
+              <input id="adminEmail" name="adminEmail" type="email" placeholder="admin@weagro.com.ar" autocomplete="email" required />
+            </div>
+            <div class="form-row">
+              <label for="adminPassword">Contraseña</label>
+              <input id="adminPassword" name="adminPassword" type="password" autocomplete="current-password" required />
+            </div>
+            <div class="admin-auth-actions">
+              <button class="btn btn-primary" type="submit">Ingresar</button>
+              <button class="btn btn-secondary" data-admin-logout type="button">Salir</button>
+            </div>
+            <p class="form-status admin-status" data-admin-status>
+              Conectando con Supabase.
+            </p>
+          </form>
+
+          <div class="admin-private" data-admin-private hidden>
+            <div class="admin-layout">
+            <form class="card admin-card" data-brand-form>
+              <h3>Agregar marca</h3>
+              <div class="form-row">
+                <label for="brandName">Nombre de la marca</label>
+                <input id="brandName" name="brandName" type="text" placeholder="Ej: Cabaña San Miguel" required />
+              </div>
+              <div class="form-row">
+                <label for="brandLogo">Logo de la marca</label>
+                <input id="brandLogo" name="brandLogo" type="file" accept="image/*" />
+              </div>
+              <button class="btn btn-primary" type="submit">Guardar marca</button>
+            </form>
+
+            <form class="card admin-card" data-work-form>
+              <h3>Agregar trabajo realizado</h3>
+              <div class="form-row">
+                <label for="workCompany">Empresa</label>
+                <input id="workCompany" name="workCompany" type="text" placeholder="Nombre de la empresa" required />
+              </div>
+              <div class="form-row">
+                <label for="workSector">Rubro</label>
+                <input id="workSector" name="workSector" type="text" placeholder="Ej: Acopio, cabaña, distribuidor" required />
+              </div>
+              <div class="form-row">
+                <label for="workDescription">Qué se resolvió</label>
+                <textarea id="workDescription" name="workDescription" placeholder="Breve descripción del proyecto" required></textarea>
+              </div>
+              <div class="form-row">
+                <label for="workResult">Resultado o impacto</label>
+                <input id="workResult" name="workResult" type="text" placeholder="Ej: consultas más ordenadas y mejor presencia comercial" />
+              </div>
+              <div class="form-row">
+                <label for="workImage">Imagen del proyecto</label>
+                <input id="workImage" name="workImage" type="file" accept="image/*" />
+              </div>
+              <fieldset class="admin-services">
+                <legend>Servicios implementados</legend>
+                <label><input type="checkbox" name="workServices" value="Página web" /> Página web</label>
+                <label><input type="checkbox" name="workServices" value="Tienda online" /> Tienda online</label>
+                <label><input type="checkbox" name="workServices" value="Branding" /> Branding</label>
+                <label><input type="checkbox" name="workServices" value="SEO" /> SEO</label>
+                <label><input type="checkbox" name="workServices" value="Redes sociales" /> Redes sociales</label>
+                <label><input type="checkbox" name="workServices" value="Webapp a medida" /> Webapp a medida</label>
+                <label><input type="checkbox" name="workServices" value="Automatizaciones" /> Automatizaciones</label>
+              </fieldset>
+              <button class="btn btn-primary" type="submit">Guardar trabajo</button>
+            </form>
+            </div>
+
+            <div class="admin-lists">
+            <div class="card admin-list-card">
+              <h3>Marcas cargadas</h3>
+              <div data-admin-brand-list></div>
+            </div>
+            <div class="card admin-list-card">
+              <h3>Trabajos cargados</h3>
+              <div data-admin-work-list></div>
+            </div>
+            </div>
           </div>
         </div>
       </section>

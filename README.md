@@ -13,6 +13,7 @@ Landing page responsive para WEAGRO, una agencia de servicios digitales para emp
 - Vite para desarrollo local y build de produccion
 - Vercel para despliegue
 - Vercel Functions + Resend para el envio de consultas por email
+- Supabase para marcas, trabajos realizados, imagenes y acceso admin
 
 ## Configuracion editable
 
@@ -41,6 +42,40 @@ Notas:
 - `CONTACT_FROM_EMAIL` debe pertenecer a un dominio verificado en Resend.
 - `CONTACT_TO_EMAIL` es opcional; si no se define, usa `info@weagro.com.ar`.
 - Para probar el envio localmente conviene usar `vercel dev`, porque Vite no ejecuta la carpeta `api/`.
+
+## Panel admin con Supabase
+
+El panel admin permite cargar marcas que confian en WEAGRO y trabajos realizados con sus servicios implementados.
+
+### 1. Crear proyecto en Supabase
+
+1. Crear un proyecto Free en Supabase.
+2. Ir a SQL Editor.
+3. Ejecutar el contenido de `supabase/schema.sql`.
+4. Crear un usuario admin en Authentication > Users.
+5. Copiar el `User UID` del usuario creado y autorizarlo en SQL Editor:
+
+```sql
+insert into public.admin_users (user_id)
+values ('PEGAR-USER-UID-AQUI')
+on conflict (user_id) do nothing;
+```
+
+### 2. Variables de entorno
+
+Configurar en `.env` local y en Vercel:
+
+```text
+VITE_SUPABASE_URL=https://TU-PROYECTO.supabase.co
+VITE_SUPABASE_ANON_KEY=TU_ANON_KEY
+```
+
+Notas:
+
+- La landing puede leer marcas y trabajos publicos sin iniciar sesion.
+- Solo usuarios autenticados en Supabase pueden crear o borrar marcas/trabajos.
+- Los logos se suben al bucket `logos`; las imagenes de trabajos se suben al bucket `projects`.
+- Si faltan las variables de Supabase, el panel funciona en modo local con `localStorage` como respaldo.
 
 ## Desarrollo local
 

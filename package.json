@@ -22,5 +22,8 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "vite": "^7.1.12"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.105.3"
   }
 }

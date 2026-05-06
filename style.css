@@ -961,6 +961,49 @@ h3 {
 .package-card.featured .package-list li { color: rgba(255, 255, 255, 0.9); }
 .package-card.featured .package-list li::before { color: var(--gold-light); }
 
+/* --- Marcas que confian --- */
+.trusted-brands {
+  background: var(--white);
+}
+
+.brand-logo-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.brand-logo-card {
+  align-items: center;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  min-height: 96px;
+  padding: 18px;
+  text-align: center;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.brand-logo-card:hover {
+  border-color: var(--green);
+  transform: translateY(-3px);
+}
+
+.brand-logo-card img {
+  display: block;
+  max-height: 54px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.brand-logo-fallback {
+  color: var(--green-dark);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 900;
+}
+
 /* --- Casos de Uso --- */
 .case-grid { display: grid; gap: clamp(16px, 2vw, 24px); }
 .case-card { overflow: hidden; }
@@ -984,6 +1027,85 @@ h3 {
   display: block;
   font-size: 0.85rem;
   color: var(--earth-dark);
+}
+
+/* --- Trabajos realizados --- */
+.completed-work {
+  background: var(--green-soft);
+}
+
+.work-grid {
+  display: grid;
+  gap: clamp(16px, 2vw, 24px);
+}
+
+.work-card {
+  display: grid;
+  overflow: hidden;
+}
+
+.work-media {
+  align-items: flex-end;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, var(--green-deep), var(--green));
+  color: white;
+  display: flex;
+  padding: 20px;
+}
+
+.work-media img {
+  height: 100%;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
+  width: 100%;
+}
+
+.work-media.has-image {
+  overflow: hidden;
+  position: relative;
+}
+
+.work-media.has-image::after {
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.68));
+  content: "";
+  inset: 0;
+  position: absolute;
+}
+
+.work-media span {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 900;
+  position: relative;
+  z-index: 1;
+}
+
+.work-body {
+  padding: clamp(20px, 3vw, 24px);
+}
+
+.work-sector {
+  color: var(--earth-dark);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.service-tag {
+  background: var(--green-soft);
+  border: 1px solid var(--gray-border);
+  border-radius: 999px;
+  color: var(--green-dark);
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 6px 10px;
 }
 
 /* --- Estimador --- */
@@ -1121,6 +1243,114 @@ h3 {
   border-top: 1px solid var(--line);
   margin: 0;
   padding: 18px 24px 24px;
+}
+
+/* --- Admin --- */
+.admin-section {
+  background: var(--white);
+}
+
+.admin-layout,
+.admin-lists {
+  display: grid;
+  gap: 24px;
+}
+
+.admin-lists {
+  margin-top: 24px;
+}
+
+.admin-card,
+.admin-list-card {
+  padding: clamp(22px, 3vw, 30px);
+}
+
+.admin-card h3,
+.admin-list-card h3 {
+  margin-top: 0;
+}
+
+.admin-auth {
+  margin-bottom: 24px;
+}
+
+.admin-auth-actions {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.admin-status {
+  display: block;
+  margin-top: 14px;
+  opacity: 1;
+}
+
+.admin-status[data-status="success"] {
+  color: var(--green);
+}
+
+.admin-status[data-status="warning"] {
+  color: var(--earth-dark);
+}
+
+.admin-status[data-status="error"] {
+  color: #9b2c2c;
+}
+
+.admin-services {
+  border: 1px solid var(--gray-border);
+  border-radius: 12px;
+  display: grid;
+  gap: 10px;
+  margin: 0 0 20px;
+  padding: 16px;
+}
+
+.admin-services legend {
+  color: var(--green-dark);
+  font-family: var(--font-heading);
+  font-weight: 900;
+  padding: 0 8px;
+}
+
+.admin-services label {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+
+.admin-item {
+  align-items: center;
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 12px 0;
+}
+
+.admin-item:first-child {
+  border-top: 0;
+}
+
+.admin-item strong {
+  display: block;
+}
+
+.admin-delete {
+  background: transparent;
+  border: 1px solid var(--gray-border);
+  border-radius: 999px;
+  color: var(--green-dark);
+  cursor: pointer;
+  font-weight: 800;
+  padding: 7px 12px;
+}
+
+.empty-state {
+  color: var(--muted);
+  margin: 0;
 }
 
 .slider-controls {
@@ -1299,6 +1529,8 @@ h3 {
   .benefits-list { grid-template-columns: repeat(2, 1fr); }
   .packages-grid { grid-template-columns: repeat(3, 1fr); }
   .case-grid { grid-template-columns: repeat(3, 1fr); }
+  .work-grid { grid-template-columns: repeat(3, 1fr); }
+  .admin-layout, .admin-lists { grid-template-columns: repeat(2, 1fr); }
   .estimator-layout { grid-template-columns: 1fr 0.7fr; }
   .contact-layout { grid-template-columns: 0.8fr 1fr; }
   .footer-grid { grid-template-columns: 1fr auto; }
