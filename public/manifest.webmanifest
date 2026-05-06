@@ -1,7 +1,7 @@
 {
-  "name": "WEAGRO - Soluciones Digitales Agro",
+  "name": "WEAGRO - Digitalización y software para el agro",
   "short_name": "WEAGRO",
-  "description": "Agencia de servicios digitales para empresas del agro en el NEA argentino.",
+  "description": "Páginas web, ecommerce, marketing, SEO y software a medida para productores, cooperativas, acopios y empresas agropecuarias.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

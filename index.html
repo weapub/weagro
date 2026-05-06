@@ -5,37 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="WEAGRO - Agencia de servicios digitales para empresas del agro en el NEA argentino."
+      content="WEAGRO digitaliza negocios agropecuarios con páginas web, ecommerce, marketing, SEO y software a medida para productores, acopios y empresas del agro."
     />
     <meta
       name="keywords"
-      content="agencia digital agro, paginas web agro, marketing agropecuario, webapps agro, NEA Argentina, WEAGRO"
+      content="digitalización agropecuaria, agencia digital agro, páginas web agro, marketing agropecuario, software agro, ecommerce agro, webapps agro, SEO agropecuario, NEA Argentina, WEAGRO"
     />
     <meta name="author" content="WEAGRO" />
     <script>document.documentElement.className += ' js';</script>
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="theme-color" content="#254019" />
     <link rel="canonical" href="https://weagro.vercel.app/" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/favicon.png" type="image/png" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="es_AR" />
     <meta property="og:site_name" content="WEAGRO" />
-    <meta property="og:title" content="WEAGRO | Soluciones digitales para empresas del agro" />
+    <meta property="og:title" content="WEAGRO | Digitalización y software para el agro" />
     <meta
       property="og:description"
-      content="Paginas web, tiendas online, branding, contenido, SEO y webapps para empresas agropecuarias del NEA."
+      content="Un proveedor digital para empresas agropecuarias: webs, ecommerce, marketing, SEO, automatizaciones y webapps a medida."
     />
     <meta property="og:url" content="https://weagro.vercel.app/" />
     <meta property="og:image" content="https://weagro.vercel.app/og-image.svg" />
+    <meta property="og:image:alt" content="WEAGRO, soluciones digitales para empresas del agro" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="WEAGRO | Soluciones digitales para empresas del agro" />
+    <meta name="twitter:title" content="WEAGRO | Digitalización y software para el agro" />
     <meta
       name="twitter:description"
-      content="Digitalizacion, marketing y software para empresas agropecuarias."
+      content="Digitalización, marketing, SEO y software para productores, acopios, cooperativas y empresas agropecuarias."
     />
     <meta name="twitter:image" content="https://weagro.vercel.app/og-image.svg" />
-    <title>WEAGRO | Soluciones digitales para empresas del agro</title>
+    <title>WEAGRO | Digitalización y software para el agro</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -54,38 +58,148 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "WEAGRO",
-        "image": "https://weagro.vercel.app/logo-weagro.png",
-        "description": "Agencia de servicios digitales especializada en el sector agropecuario del NEA. Desarrollo web, tiendas online y software a medida.",
-        "url": "https://weagro.vercel.app/",
-        "telephone": "+543704602028",
-        "address": {
-          "@type": "PostalAddress",
-          "addressRegion": "Formosa",
-          "addressCountry": "AR"
-        },
-        "geo": {
-          "@type": "GeoCoordinates",
-          "latitude": -26.18,
-          "longitude": -58.17
-        },
-        "openingHoursSpecification": {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday"
-          ],
-          "opens": "08:00",
-          "closes": "18:00"
-        },
-        "sameAs": [
-          "https://github.com/weapub/weagro"
-        ],
-        "priceRange": "$$"
+        "@graph": [
+          {
+            "@type": "ProfessionalService",
+            "@id": "https://weagro.vercel.app/#business",
+            "name": "WEAGRO",
+            "url": "https://weagro.vercel.app/",
+            "logo": "https://weagro.vercel.app/logo-positivo.svg",
+            "image": "https://weagro.vercel.app/og-image.svg",
+            "description": "Agencia digital especializada en digitalización agropecuaria: páginas web, ecommerce, marketing, SEO, branding y software a medida para productores, acopios, cooperativas, distribuidores, agroindustrias y empresas del campo.",
+            "telephone": "+543704602028",
+            "email": "info@weagro.com.ar",
+            "priceRange": "$$",
+            "areaServed": [
+              { "@type": "Country", "name": "Argentina" },
+              { "@type": "AdministrativeArea", "name": "NEA argentino" },
+              { "@type": "AdministrativeArea", "name": "Formosa" },
+              { "@type": "AdministrativeArea", "name": "Chaco" },
+              { "@type": "AdministrativeArea", "name": "Corrientes" },
+              { "@type": "AdministrativeArea", "name": "Misiones" }
+            ],
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "Formosa",
+              "addressCountry": "AR"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": -26.18,
+              "longitude": -58.17
+            },
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "08:00",
+              "closes": "18:00"
+            },
+            "knowsAbout": [
+              "digitalización agropecuaria",
+              "marketing agropecuario",
+              "páginas web para empresas agropecuarias",
+              "ecommerce para insumos agropecuarios",
+              "software agro",
+              "SEO para empresas del agro",
+              "automatización comercial"
+            ],
+            "sameAs": ["https://github.com/weapub/weagro"],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Servicios digitales para empresas del agro",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Páginas web para empresas agropecuarias",
+                    "description": "Sitios institucionales rápidos, claros y preparados para convertir visitas en consultas comerciales."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Ecommerce y catálogos online para el agro",
+                    "description": "Tiendas online y catálogos para insumos, productos, repuestos, genética, remates y servicios agropecuarios."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Software agro y webapps a medida",
+                    "description": "Herramientas internas, formularios, tableros, reportes e integraciones para ordenar procesos del negocio agropecuario."
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Marketing digital y SEO agropecuario",
+                    "description": "Estrategia, contenido, posicionamiento orgánico y campañas para captar demanda calificada del sector."
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://weagro.vercel.app/#website",
+            "url": "https://weagro.vercel.app/",
+            "name": "WEAGRO",
+            "publisher": { "@id": "https://weagro.vercel.app/#business" },
+            "inLanguage": "es-AR"
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://weagro.vercel.app/#webpage",
+            "url": "https://weagro.vercel.app/",
+            "name": "WEAGRO | Digitalización y software para el agro",
+            "description": "Landing page de WEAGRO para productores, PyMEs agropecuarias, acopios, cooperativas, distribuidores y agroindustrias que buscan digitalizar su negocio.",
+            "isPartOf": { "@id": "https://weagro.vercel.app/#website" },
+            "about": { "@id": "https://weagro.vercel.app/#business" },
+            "inLanguage": "es-AR"
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://weagro.vercel.app/#faq-schema",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "¿WEAGRO trabaja con pequeños productores y empresas grandes?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí. WEAGRO acompaña desde productores y emprendimientos agropecuarios que necesitan presencia digital hasta acopios, cooperativas, distribuidores y agroindustrias que requieren integrar procesos, canales y herramientas."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué servicios digitales ofrece WEAGRO para el agro?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "WEAGRO ofrece páginas web, tiendas online, branding, contenido, redes sociales, SEO, automatizaciones, webapps a medida, formularios, paneles e integraciones para negocios agropecuarios."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Por qué conviene centralizar la digitalización agropecuaria en un solo proveedor?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Centralizar diseño, marketing, web, SEO y software permite que la comunicación, los datos y los procesos trabajen con una misma estrategia, evitando herramientas aisladas y esfuerzos duplicados."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿WEAGRO puede desarrollar software agro a medida?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí. WEAGRO desarrolla webapps, tableros, formularios, flujos de seguimiento e integraciones para ordenar stock, consultas, ventas, comunicación con productores y procesos internos."
+                }
+              }
+            ]
+          }
+        ]
       }
     </script>
     <link rel="stylesheet" href="./style.css" />
@@ -130,11 +244,11 @@
         <div class="container hero-grid">
           <div class="hero-content">
             <p class="eyebrow">Agencia digital para el agro</p>
-            <h1>Soluciones digitales para empresas del agro</h1>
+            <h1>Digitalización para productores y empresas del agro</h1>
             <p class="lead">
-              Diseñamos páginas web, tiendas online, contenido audiovisual,
-              estrategias digitales y webapps para empresas agropecuarias que
-              quieren crecer con una presencia profesional y medible.
+              Creamos páginas web, tiendas online, marketing, SEO, contenido y
+              software agro a medida para quienes quieren ordenar, vender y
+              escalar su negocio con un solo proveedor digital.
             </p>
             <div class="hero-actions">
               <button class="btn btn-primary" data-scroll-contact type="button">
@@ -206,8 +320,9 @@
             <p class="eyebrow">Lo que hacemos</p>
             <h2>Servicios digitales para el agro</h2>
             <p class="lead">
-              Del branding al software: todo en un mismo equipo especializado
-              en el sector agropecuario.
+              Del pequeño productor a la agroindustria: estrategia, diseño,
+              desarrollo y captación de demanda en un mismo equipo
+              especializado en negocios agropecuarios.
             </p>
           </div>
           <div class="services-grid">
@@ -216,14 +331,14 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/><path d="M12 2v20" stroke="var(--accent-harvest)"/></svg>
               </span>
               <h3>Páginas web agro</h3>
-              <p>Sitios institucionales rápidos, claros y preparados para convertir visitas en consultas.</p>
+              <p>Sitios institucionales rápidos para productores, cabañas, acopios y empresas agropecuarias que necesitan generar confianza y consultas.</p>
             </article>
             <article class="card service-card">
               <span class="service-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0" stroke="var(--accent-harvest)"/></svg>
               </span>
-              <h3>Tiendas online</h3>
-              <p>Catálogos y ecommerce para insumos, productos, repuestos y servicios del sector.</p>
+              <h3>Tiendas online y catálogos</h3>
+              <p>Ecommerce para insumos, productos, repuestos, genética, remates y servicios del sector agropecuario.</p>
             </article>
             <article class="card service-card">
               <span class="service-icon">
@@ -250,15 +365,15 @@
               <span class="service-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 7v8" stroke="var(--accent-harvest)"/><path d="m8 12 3 3 3-3" stroke="var(--accent-harvest)"/></svg>
               </span>
-              <h3>SEO</h3>
-              <p>Optimización para que tu empresa aparezca cuando productores y compradores buscan.</p>
+              <h3>SEO agropecuario</h3>
+              <p>Optimización técnica y de contenidos para aparecer cuando productores, compradores o distribuidores buscan soluciones del campo.</p>
             </article>
             <article class="card service-card">
               <span class="service-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16" stroke="var(--accent-harvest)"/></svg>
               </span>
-              <h3>Webapps a medida</h3>
-              <p>Herramientas internas, formularios, tableros y automatizaciones para ordenar procesos.</p>
+              <h3>Software agro y webapps</h3>
+              <p>Herramientas internas, formularios, tableros, reportes e integraciones para ordenar procesos comerciales y operativos.</p>
             </article>
           </div>
         </div>
@@ -272,8 +387,10 @@
             <h2>Tecnología y diseño con alma de campo</h2>
             <p>
               No somos una agencia genérica. WEAGRO nació para acompañar a
-              empresas agropecuarias del NEA con soluciones digitales simples,
-              profesionales y conectadas con la realidad comercial del sector.
+              empresas agropecuarias con soluciones digitales simples,
+              profesionales y conectadas con la realidad comercial del sector:
+              ciclos productivos, zonas de influencia, venta consultiva,
+              distribuidores, productores y equipos de trabajo en territorio.
             </p>
           </div>
           <div class="why-grid">
@@ -747,6 +864,58 @@
           <div class="slider-controls">
             <button class="slider-btn prev" aria-label="Testimonio anterior">←</button>
             <button class="slider-btn next" aria-label="Testimonio siguiente">→</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Preguntas frecuentes -->
+      <section class="section faq" id="faq">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Preguntas frecuentes</p>
+            <h2>Digitalización agropecuaria sin vueltas.</h2>
+            <p class="lead">
+              Respuestas claras para productores, PyMEs agropecuarias,
+              cooperativas, distribuidores y empresas que quieren dar el
+              siguiente paso digital.
+            </p>
+          </div>
+          <div class="faq-grid">
+            <details class="card faq-item" open>
+              <summary>¿WEAGRO trabaja con pequeños productores y empresas grandes?</summary>
+              <p>
+                Sí. Acompañamos desde productores y emprendimientos que
+                necesitan presencia digital hasta acopios, cooperativas,
+                distribuidores y agroindustrias que buscan integrar procesos,
+                canales comerciales y herramientas internas.
+              </p>
+            </details>
+            <details class="card faq-item">
+              <summary>¿Qué servicios digitales ofrece WEAGRO para el agro?</summary>
+              <p>
+                Creamos páginas web, tiendas online, identidad visual,
+                contenido, redes sociales, SEO, automatizaciones, formularios,
+                paneles, reportes y webapps a medida para negocios
+                agropecuarios.
+              </p>
+            </details>
+            <details class="card faq-item">
+              <summary>¿Por qué conviene centralizar todo en un solo proveedor?</summary>
+              <p>
+                Porque diseño, marketing, web, SEO y software funcionan mejor
+                cuando responden a una misma estrategia. Así se evitan
+                herramientas aisladas, mensajes desordenados y esfuerzos
+                duplicados.
+              </p>
+            </details>
+            <details class="card faq-item">
+              <summary>¿WEAGRO puede desarrollar software agro a medida?</summary>
+              <p>
+                Sí. Desarrollamos webapps, tableros, formularios, flujos de
+                seguimiento e integraciones para ordenar stock, consultas,
+                ventas, comunicación con productores y procesos internos.
+              </p>
+            </details>
           </div>
         </div>
       </section>

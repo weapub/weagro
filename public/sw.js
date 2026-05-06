@@ -1,5 +1,5 @@
-const CACHE_NAME = "weagro-v2";
-const ASSETS = ["/", "/index.html", "/logo-weagro.png", "/favicon.png"];
+const CACHE_NAME = "weagro-v3";
+const ASSETS = ["/", "/index.html", "/logo-positivo.svg", "/favicon.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(ASSETS)));

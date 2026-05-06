@@ -1072,6 +1072,57 @@ h3 {
   display: inline-block;
 }
 
+/* --- FAQ SEO --- */
+.faq {
+  background: linear-gradient(180deg, var(--white) 0%, var(--green-soft) 100%);
+}
+
+.faq-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.faq-item {
+  padding: 0;
+  overflow: hidden;
+}
+
+.faq-item summary {
+  align-items: center;
+  color: var(--green-dark);
+  cursor: pointer;
+  display: flex;
+  font-family: var(--font-heading);
+  font-size: clamp(1.05rem, 2vw, 1.22rem);
+  font-weight: 900;
+  gap: 16px;
+  justify-content: space-between;
+  list-style: none;
+  padding: 22px 24px;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  color: var(--green);
+  content: "+";
+  flex: 0 0 auto;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.faq-item[open] summary::after {
+  content: "-";
+}
+
+.faq-item p {
+  border-top: 1px solid var(--line);
+  margin: 0;
+  padding: 18px 24px 24px;
+}
+
 .slider-controls {
   display: flex;
   justify-content: center;
