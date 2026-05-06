@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#254019" />
+    <title>Panel admin | WEAGRO</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="logo" href="/" aria-label="Volver a WEAGRO">
+          <img
+            class="logo-image"
+            src="./logo-positivo.svg"
+            alt="WEAGRO"
+            width="459"
+            height="155"
+            loading="eager"
+          />
+        </a>
+        <nav class="nav-menu" aria-label="Navegación admin">
+          <a href="/">Sitio público</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="section admin-section" id="admin">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Panel admin</p>
+            <h1>Cargar marcas y trabajos realizados.</h1>
+            <p class="lead">
+              Iniciá sesión para guardar logos, proyectos y servicios
+              implementados en la base de datos de WEAGRO.
+            </p>
+          </div>
+
+          <form class="card admin-card admin-auth" data-admin-login>
+            <h3>Acceso administrador</h3>
+            <div class="form-row">
+              <label for="adminEmail">Email</label>
+              <input id="adminEmail" name="adminEmail" type="email" placeholder="admin@weagro.com.ar" autocomplete="email" required />
+            </div>
+            <div class="form-row">
+              <label for="adminPassword">Contraseña</label>
+              <input id="adminPassword" name="adminPassword" type="password" autocomplete="current-password" required />
+            </div>
+            <div class="admin-auth-actions">
+              <button class="btn btn-primary" type="submit">Ingresar</button>
+              <button class="btn btn-secondary" data-admin-logout type="button">Salir</button>
+            </div>
+            <p class="form-status admin-status" data-admin-status>
+              Conectando con Supabase.
+            </p>
+          </form>
+
+          <div class="admin-private" data-admin-private hidden>
+            <div class="admin-layout">
+              <form class="card admin-card" data-brand-form>
+                <h3>Agregar marca</h3>
+                <div class="form-row">
+                  <label for="brandName">Nombre de la marca</label>
+                  <input id="brandName" name="brandName" type="text" placeholder="Ej: Cabaña San Miguel" required />
+                </div>
+                <div class="form-row">
+                  <label for="brandLogo">Logo de la marca</label>
+                  <input id="brandLogo" name="brandLogo" type="file" accept="image/*" />
+                </div>
+                <button class="btn btn-primary" type="submit">Guardar marca</button>
+              </form>
+
+              <form class="card admin-card" data-work-form>
+                <h3>Agregar trabajo realizado</h3>
+                <div class="form-row">
+                  <label for="workCompany">Empresa</label>
+                  <input id="workCompany" name="workCompany" type="text" placeholder="Nombre de la empresa" required />
+                </div>
+                <div class="form-row">
+                  <label for="workSector">Rubro</label>
+                  <input id="workSector" name="workSector" type="text" placeholder="Ej: Acopio, cabaña, distribuidor" required />
+                </div>
+                <div class="form-row">
+                  <label for="workDescription">Qué se resolvió</label>
+                  <textarea id="workDescription" name="workDescription" placeholder="Breve descripción del proyecto" required></textarea>
+                </div>
+                <div class="form-row">
+                  <label for="workResult">Resultado o impacto</label>
+                  <input id="workResult" name="workResult" type="text" placeholder="Ej: consultas más ordenadas y mejor presencia comercial" />
+                </div>
+                <div class="form-row">
+                  <label for="workImage">Imagen del proyecto</label>
+                  <input id="workImage" name="workImage" type="file" accept="image/*" />
+                </div>
+                <fieldset class="admin-services">
+                  <legend>Servicios implementados</legend>
+                  <label><input type="checkbox" name="workServices" value="Página web" /> Página web</label>
+                  <label><input type="checkbox" name="workServices" value="Tienda online" /> Tienda online</label>
+                  <label><input type="checkbox" name="workServices" value="Branding" /> Branding</label>
+                  <label><input type="checkbox" name="workServices" value="SEO" /> SEO</label>
+                  <label><input type="checkbox" name="workServices" value="Redes sociales" /> Redes sociales</label>
+                  <label><input type="checkbox" name="workServices" value="Webapp a medida" /> Webapp a medida</label>
+                  <label><input type="checkbox" name="workServices" value="Automatizaciones" /> Automatizaciones</label>
+                </fieldset>
+                <button class="btn btn-primary" type="submit">Guardar trabajo</button>
+              </form>
+            </div>
+
+            <div class="admin-lists">
+              <div class="card admin-list-card">
+                <h3>Marcas cargadas</h3>
+                <div data-admin-brand-list></div>
+              </div>
+              <div class="card admin-list-card">
+                <h3>Trabajos cargados</h3>
+                <div data-admin-work-list></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

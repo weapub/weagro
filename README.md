@@ -47,6 +47,12 @@ Notas:
 
 El panel admin permite cargar marcas que confian en WEAGRO y trabajos realizados con sus servicios implementados.
 
+El acceso al panel queda separado de la landing publica en:
+
+```text
+/admin
+```
+
 ### 1. Crear proyecto en Supabase
 
 1. Crear un proyecto Free en Supabase.

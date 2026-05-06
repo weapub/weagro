@@ -662,6 +662,7 @@ function updateEstimate() {
   ].join("");
 }
 
+if (companyType && urgency && sendEstimate) {
 serviceCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", () => {
     updateEstimate();
@@ -697,13 +698,14 @@ sendEstimate.addEventListener("click", () => {
     "noopener,noreferrer"
   );
 });
+}
 
 contactButtons.forEach((button) => {
   button.addEventListener("click", () => {
     trackEvent("cta_contact_click", {
       label: button.textContent.trim(),
     });
-    document.getElementById("contacto").scrollIntoView({
+    document.getElementById("contacto")?.scrollIntoView({
       behavior: "smooth",
       block: "start",
     });
@@ -718,7 +720,7 @@ whatsappLinks.forEach((link) => {
   });
 });
 
-contactForm.addEventListener("submit", (event) => {
+contactForm?.addEventListener("submit", (event) => {
   event.preventDefault();
   const formData = new FormData(contactForm);
   const submitButton = contactForm.querySelector('button[type="submit"]');
