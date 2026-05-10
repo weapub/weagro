@@ -493,7 +493,9 @@ async function initPortfolioAdmin() {
     if (brandFormTitle) brandFormTitle.textContent = "Editar marca";
     if (brandSubmit) brandSubmit.textContent = "Guardar cambios";
     if (brandCancel) brandCancel.hidden = false;
+    setAdminStatus(`Editando marca: ${brand.name || "sin nombre"}.`, "info");
     brandForm.scrollIntoView({ behavior: "smooth", block: "center" });
+    brandForm.elements.brandName.focus({ preventScroll: true });
   }
 
   function editWork(work) {
@@ -512,7 +514,9 @@ async function initPortfolioAdmin() {
     if (workFormTitle) workFormTitle.textContent = "Editar trabajo realizado";
     if (workSubmit) workSubmit.textContent = "Guardar cambios";
     if (workCancel) workCancel.hidden = false;
+    setAdminStatus(`Editando trabajo: ${work.company || "sin nombre"}.`, "info");
     workForm.scrollIntoView({ behavior: "smooth", block: "center" });
+    workForm.elements.workCompany.focus({ preventScroll: true });
   }
 
   const loadFromSupabase = async () => {
@@ -604,6 +608,7 @@ async function initPortfolioAdmin() {
 
     loginForm.reset();
     await refreshSession();
+    await loadFromSupabase();
   });
 
   logoutButton?.addEventListener("click", async () => {
@@ -700,6 +705,7 @@ async function initPortfolioAdmin() {
 
   supabase?.auth.onAuthStateChange(() => {
     refreshSession();
+    loadFromSupabase();
   });
 
   await loadFromSupabase();
