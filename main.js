@@ -412,6 +412,24 @@ function fileFromForm(formData, key) {
   return value instanceof File && value.size > 0 ? value : null;
 }
 
+function setFieldValue(form, name, value) {
+  const field = form?.querySelector(`[name="${name}"]`);
+  if (!field) return;
+  field.value = value ?? "";
+}
+
+function focusField(form, name) {
+  const field = form?.querySelector(`[name="${name}"]`);
+  if (!field) return;
+  field.focus({ preventScroll: true });
+}
+
+function normalizeServices(services) {
+  if (Array.isArray(services)) return services;
+  if (typeof services === "string") return services.split(",").map((service) => service.trim()).filter(Boolean);
+  return [];
+}
+
 function sanitizeFileName(name) {
   return name
     .normalize("NFD")
@@ -462,8 +480,8 @@ async function initPortfolioAdmin() {
   const resetBrandForm = () => {
     brandForm?.reset();
     if (brandForm) {
-      brandForm.elements.brandId.value = "";
-      brandForm.elements.currentLogoUrl.value = "";
+      setFieldValue(brandForm, "brandId", "");
+      setFieldValue(brandForm, "currentLogoUrl", "");
     }
     if (brandFormTitle) brandFormTitle.textContent = "Agregar marca";
     if (brandSubmit) brandSubmit.textContent = "Guardar marca";
@@ -473,8 +491,8 @@ async function initPortfolioAdmin() {
   const resetWorkForm = () => {
     workForm?.reset();
     if (workForm) {
-      workForm.elements.workId.value = "";
-      workForm.elements.currentImageUrl.value = "";
+      setFieldValue(workForm, "workId", "");
+      setFieldValue(workForm, "currentImageUrl", "");
       workForm.querySelectorAll('input[name="workServices"]').forEach((checkbox) => {
         checkbox.checked = false;
       });
@@ -486,28 +504,28 @@ async function initPortfolioAdmin() {
 
   function editBrand(brand) {
     if (!brandForm) return;
-    brandForm.elements.brandId.value = brand.id;
-    brandForm.elements.currentLogoUrl.value = brand.logo_url || brand.logoUrl || "";
-    brandForm.elements.brandName.value = brand.name || "";
-    brandForm.elements.brandLogo.value = "";
+    setFieldValue(brandForm, "brandId", brand.id);
+    setFieldValue(brandForm, "currentLogoUrl", brand.logo_url || brand.logoUrl || "");
+    setFieldValue(brandForm, "brandName", brand.name || "");
+    setFieldValue(brandForm, "brandLogo", "");
     if (brandFormTitle) brandFormTitle.textContent = "Editar marca";
     if (brandSubmit) brandSubmit.textContent = "Guardar cambios";
     if (brandCancel) brandCancel.hidden = false;
     setAdminStatus(`Editando marca: ${brand.name || "sin nombre"}.`, "info");
     brandForm.scrollIntoView({ behavior: "smooth", block: "center" });
-    brandForm.elements.brandName.focus({ preventScroll: true });
+    focusField(brandForm, "brandName");
   }
 
   function editWork(work) {
     if (!workForm) return;
-    workForm.elements.workId.value = work.id;
-    workForm.elements.currentImageUrl.value = work.image_url || work.imageUrl || "";
-    workForm.elements.workCompany.value = work.company || "";
-    workForm.elements.workSector.value = work.sector || "";
-    workForm.elements.workDescription.value = work.description || "";
-    workForm.elements.workResult.value = work.result || "";
-    workForm.elements.workImage.value = "";
-    const services = new Set(work.services || []);
+    setFieldValue(workForm, "workId", work.id);
+    setFieldValue(workForm, "currentImageUrl", work.image_url || work.imageUrl || "");
+    setFieldValue(workForm, "workCompany", work.company || "");
+    setFieldValue(workForm, "workSector", work.sector || "");
+    setFieldValue(workForm, "workDescription", work.description || "");
+    setFieldValue(workForm, "workResult", work.result || "");
+    setFieldValue(workForm, "workImage", "");
+    const services = new Set(normalizeServices(work.services));
     workForm.querySelectorAll('input[name="workServices"]').forEach((checkbox) => {
       checkbox.checked = services.has(checkbox.value);
     });
@@ -516,7 +534,7 @@ async function initPortfolioAdmin() {
     if (workCancel) workCancel.hidden = false;
     setAdminStatus(`Editando trabajo: ${work.company || "sin nombre"}.`, "info");
     workForm.scrollIntoView({ behavior: "smooth", block: "center" });
-    workForm.elements.workCompany.focus({ preventScroll: true });
+    focusField(workForm, "workCompany");
   }
 
   const loadFromSupabase = async () => {

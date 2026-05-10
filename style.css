@@ -44,12 +44,13 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Evita que el header sticky tape los títulos al navegar */
+  scroll-padding-top: 92px; /* Evita que el header fijo tape los títulos al navegar */
   overflow-x: clip;
 }
 
 body {
   margin: 0;
+  padding-top: 76px;
   background:
     radial-gradient(circle at 12% 8%, rgba(28, 77, 43, 0.03), transparent 28%),
     linear-gradient(180deg, var(--bg) 0%, #ffffff 100%);
@@ -316,8 +317,7 @@ h3 {
   backdrop-filter: blur(16px);
   box-shadow: 0 10px 32px rgba(31, 31, 31, 0.05);
   left: 0;
-  position: -webkit-sticky;
-  position: sticky;
+  position: fixed;
   right: 0;
   top: 0;
   width: 100%;
@@ -1453,6 +1453,14 @@ h3 {
 
 /* --- Responsividad --- */
 @media (max-width: 767px) {
+  html {
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    padding-top: 72px;
+  }
+
   .section {
     padding: 52px 0;
   }
