@@ -9,7 +9,7 @@ Landing page responsive para WEAGRO, una agencia de servicios digitales para emp
 - HTML5 standalone
 - CSS3 separado en `style.css`
 - JavaScript minimo en `main.js`
-- Tipografias Nunito + Poppins desde Google Fonts
+- Tipografias Nunito + Plus Jakarta Sans desde Google Fonts
 - Vite para desarrollo local y build de produccion
 - Vercel para despliegue
 - Vercel Functions + Resend para el envio de consultas por email
